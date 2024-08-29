@@ -7,8 +7,8 @@
  *
  * */
 typedef struct _entity {
-  short id, local_id;
-  unsigned char states;
+  unsigned short id, local_id;
+  unsigned char state;
   float x, y;
   struct {
     unsigned char colision:1;
@@ -22,6 +22,6 @@ ENTITY *entity_init(short local_id, short id );
 char *entity_get_name(ENTITY *e);
 
 /* получает спрайт сущности */
-SDL_Surface *entity_get_sprite(ENTITY *e, unsigned char state);
+SDL_Surface *entity_get_sprite(ENTITY *e);
 
 #endif

@@ -10,7 +10,7 @@
  *
  * */
 typedef struct _map {
-  char *name;
+  char *location_map_name; /* location/map */
   short w, h;
   short texture_c;
   short entity_c;
@@ -22,7 +22,7 @@ typedef struct _map {
   } flags;
 } MAP;
 
-MAP *map_load();
+MAP *map_load(char *name);
 
 void map_unload(MAP *m);
 
