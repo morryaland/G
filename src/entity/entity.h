@@ -8,22 +8,20 @@
  * */
 typedef struct _entity {
   short id, local_id;
-  //TODO: состояние 1, 2, 3...
+  unsigned char states;
   float x, y;
   struct {
     unsigned char colision:1;
-    unsigned char up:1;
-    unsigned char doun:1;
-    unsigned char left:1;
-    unsigned char right:1;
   } flags;
 } ENTITY;
 
-/* создаёт новую сущьность */
-ENTITY *entity_init(short local_id /*TODO: тип сущьности */);
+/* создаёт новую сущность */
+ENTITY *entity_init(short local_id, short id );
 
 /* получает глобальное имя сущьности */
 char *entity_get_name(ENTITY *e);
 
-#endif
+/* получает спрайт сущности */
+SDL_Surface *entity_get_sprite(ENTITY *e, unsigned char state);
 
+#endif

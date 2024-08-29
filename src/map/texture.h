@@ -8,7 +8,7 @@
  * */
 typedef struct _texture {
   short x, y;
-  SDL_Surface *textur;
-} TEXTUR;
+  SDL_Surface *sprite;
+} TEXTURE;
 
 #endif
