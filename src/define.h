@@ -2,6 +2,10 @@
 
 #define img(a) IMG_Load(a)
 
+#define MAP_FILE_FORMAT ".xml"
+#define ASSETS_DIR "./assets/"
+#define LOCATION_DIR "location/"
+
 /* IMG */
 #define IMG_ERROR          img("")
 #define IMG_PLAYER_FORWARD img("")

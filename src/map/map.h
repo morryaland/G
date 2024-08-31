@@ -22,8 +22,8 @@ typedef struct _map {
   } flags;
 } MAP;
 
-MAP *map_load(char *name);
+MAP *map_load(const char *name);
 
-void map_unload(MAP *m);
+void map_unload(MAP **m);
 
 #endif
