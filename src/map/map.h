@@ -14,7 +14,7 @@ typedef struct _map {
   short w, h;
   short texture_c;
   short entity_c;
-  TEXTURE *background;
+  SDL_Surface *background;
   TEXTURE *texture_map;
   ENTITY *entity;
   struct{

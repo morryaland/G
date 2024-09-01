@@ -1,1 +1,11 @@
 AC_INIT(G, 0.0)
+AC_CONFIG_SRCDIR(src/main.c)
+
+AC_PROG_CC
+AC_PROG_MKDIR_P
+
+AC_CONFIG_FILES(Makefile)
+
+LDFLAGS="-L/usr/local/lib -lSDL2 -lSDL2_image"
+
+AC_OUTPUT
