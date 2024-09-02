@@ -8,7 +8,8 @@ void Test_map_load(CuTest *tc)
   MAP test_map = {
     .w = 128,
     .h = 256,
-    .background = img(ASSETS_DIR LOCATION_DIR MAP_NAME IMG_FILE_FORMAT)
+    .background = img(ASSETS_DIR LOCATION_DIR MAP_NAME IMG_FILE_FORMAT),
+    .texture_c = 2
   };
   MAP *load_map = map_load(MAP_NAME);
   CuAssertPtrNotNull(tc, load_map);
