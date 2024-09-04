@@ -1,6 +1,6 @@
 <Map>
   <Width>128</Width>
-  <Height>128</Height>
+  <Height>256</Height>
   <Background>void/void</Background>
   <Texture name=void/void>
     <cords x=10 y=12/>

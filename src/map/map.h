@@ -10,7 +10,7 @@
  *
  * */
 typedef struct _map {
-  char *location_map_name; /* location/map */
+  char location_map_name[256]; /* location/map */
   short w, h;
   short texture_c;
   short entity_c;

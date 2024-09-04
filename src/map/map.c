@@ -37,13 +37,17 @@ MAP *map_load(const char *map_name)
   struct xml_document *d = xml_parse_document((uint8_t*)buffer, length);
   if (!d) {
     fprintf(stderr, "document: \"%s\" dont parse\nsrc: %s\n", path, buffer);
-    exit(-1);
+    free(buffer);
+    free(m);
+    return NULL;
   }
   struct xml_node *root = xml_document_root(d);
   int node_c = xml_node_children(root);
   if (node_c < 3) {
       fprintf(stderr, "file: %s number of child nodes\n", path);
-      exit(-1);
+      free(buffer);
+      free(m);
+      return NULL;
   }
   for (int i = 0; i < node_c; i++) {
     struct xml_node *rchild = xml_node_child(root, i);
@@ -97,9 +101,10 @@ MAP *map_load(const char *map_name)
     }
     else {
       fprintf(stderr, "handler for %s not found in file: %s\n", name, path);
-      exit(-1);
+      free(buffer);
+      free(m);
+      return NULL;
     }
-
   }
 
   free(buffer);
@@ -110,6 +115,11 @@ MAP *map_load(const char *map_name)
 void map_unload(MAP **m)
 {
   SDL_free((**m).background);
+  for (int i = 0; i < (**m).texture_c; i++) {
+    free((**m).texture_map[i].cords);
+    SDL_free((**m).texture_map[i].sprite);
+  }
+  free((**m).texture_map);
   free(*m);
   *m = NULL;
 }

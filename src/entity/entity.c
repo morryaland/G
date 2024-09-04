@@ -24,6 +24,9 @@ ENTITY *entity_init(short local_id, short id )
 
 char *entity_get_name(ENTITY *e)
 {
+  if (!entity_list) {
+    
+  }
   return entity_list[e->id].name;
 }
 
