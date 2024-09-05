@@ -5,7 +5,7 @@ CFLAGS+=-Wall -g
 all: $(TARGET)
 
 run: $(TARGET)
-	$(shell ./$(TARGET) )
+	./$(TARGET)
 
 $(TARGET): generate.c test.c CuTest.c
 	$(CC) -o $@ $(LDFLAGS) $(CFLAGS) $(OBJ) $^
@@ -14,4 +14,4 @@ generate.c: test.c
 	$(shell ./make-tests.sh test.c > generate.c)
 
 clean:
-	rm $(TARGET)
+	rm $(TARGET) generate.c

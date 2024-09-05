@@ -18,3 +18,7 @@
 #define ENTITY_MAX 1024
 #define ID_ERROR  0
 #define ID_PLAYER 1
+
+/* NAME */
+#define NAME_ERROR "ERROR"
+#define NAME_PLAYER "player"

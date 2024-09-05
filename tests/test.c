@@ -10,10 +10,14 @@ void Test_map_load(CuTest *tc)
     .w = 128,
     .h = 256,
     .background = img(ASSETS_DIR LOCATION_DIR MAP_NAME IMG_FILE_FORMAT),
-    .location_map_name = "void/void"
+    .location_map_name = MAP_NAME
   };
   MAP *load_map = map_load(MAP_NAME);
   CuAssertPtrNotNull(tc, load_map);
+  CuAssertPtrNotNull(tc, load_map->background);
+  CuAssertPtrNotNull(tc, load_map->texture_map);
+  CuAssertPtrNotNull(tc, load_map->texture_map[0].sprite);
+  CuAssertPtrNotNull(tc, load_map->texture_map[0].cords);
   CuAssertIntEquals(tc, load_map->w, test_map.w);
   CuAssertIntEquals(tc, load_map->h, test_map.h);
   CuAssertStrEquals(tc, load_map->location_map_name, test_map.location_map_name);
@@ -26,7 +30,8 @@ void Test_entity(CuTest *tc)
     .y = 2,
     .id = ID_PLAYER,
     .local_id = 0,
-    .state = 0
+    .state = 0,
+    .flags.colision = 1
   };
   entity_list_init();
   ENTITY *e = entity_init(0, ID_PLAYER);
@@ -38,5 +43,6 @@ void Test_entity(CuTest *tc)
   CuAssertIntEquals(tc, e->state, entity.state);
   CuAssertIntEquals(tc, e->id, entity.id);
   CuAssertIntEquals(tc, e->local_id, entity.local_id);
-  CuAssertStrEquals(tc, entity_get_name(e), "player");
+  CuAssertIntEquals(tc, e->flags.colision, entity.flags.colision);
+  CuAssertStrEquals(tc, entity_get_name(e), NAME_PLAYER);
 }

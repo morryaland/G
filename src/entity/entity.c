@@ -6,9 +6,9 @@ GLOBAL_ENTITY *entity_list;
 void entity_list_init()
 {
   entity_list = (GLOBAL_ENTITY[ENTITY_MAX]){};
-  entity_list[ID_ERROR]  = (GLOBAL_ENTITY){ .name = "ERROR",  .id = ID_ERROR,  .state_c = 1,
+  entity_list[ID_ERROR]  = (GLOBAL_ENTITY){ .name = NAME_ERROR,  .id = ID_ERROR,  .state_c = 1,
     .sprites = (SDL_Surface*[]){ IMG_ERROR }};
-  entity_list[ID_PLAYER] = (GLOBAL_ENTITY){ .name = "player", .id = ID_PLAYER, .state_c = 4,
+  entity_list[ID_PLAYER] = (GLOBAL_ENTITY){ .name = NAME_PLAYER, .id = ID_PLAYER, .state_c = 4,
     .sprites = (SDL_Surface*[]){ IMG_PLAYER_BACK, IMG_PLAYER_FORWARD, IMG_PLAYER_LEFT, IMG_PLAYER_RIGHT }};
 }
 
@@ -25,12 +25,25 @@ ENTITY *entity_init(short local_id, short id )
 char *entity_get_name(ENTITY *e)
 {
   if (!entity_list) {
-    
+    fprintf(stderr, "entity list doesn't init\n");
+    return NULL;
+  }
+  if (!e) {
+    fprintf(stderr, "entity doesn't init\n");
+    return NULL;
   }
   return entity_list[e->id].name;
 }
 
 SDL_Surface *entity_update_sprite(ENTITY *e)
 {
+  if (!entity_list) {
+    fprintf(stderr, "entity list doesn't init\n");
+    return NULL;
+  }
+  if (!e) {
+    fprintf(stderr, "entity doesn't init\n");
+    return NULL;
+  }
   return entity_list[e->id].sprites[e->state];
 }

@@ -14,7 +14,7 @@ MAP *map_load(const char *map_name)
   strcpy(m->location_map_name, map_name);
   m->texture_c = m->entity_c = 0;
 
-  char path[256] = {};
+  char path[256] = "";
   strcat(path, ASSETS_DIR);
   strcat(path, LOCATION_DIR);
   strcat(path, map_name);
@@ -53,12 +53,12 @@ MAP *map_load(const char *map_name)
     struct xml_node *rchild = xml_node_child(root, i);
     struct xml_string *rchild_name = xml_node_name(rchild);
     struct xml_string *rchild_content = xml_node_content(rchild);
-    char name[64] = {};
-    char content[256] = {};
+    char name[64] = "";
+    char content[256] = "";
     xml_string_copy(rchild_name, name, xml_string_length(rchild_name));
     xml_string_copy(rchild_content, content, xml_string_length(rchild_content));
 
-    if (!strcmp(name, "Width")) {
+    if (!strcmp(name, "Width")) { //TODO: string ecuvelas
       m->w = strtol(content, NULL, 10);
     }
     else if (!strcmp(name, "Height")) {
@@ -73,15 +73,16 @@ MAP *map_load(const char *map_name)
       m->background = img(bpath);
     }
     else if (!strcmp(name, "Texture")) {
-      char tpath[256] = {};
-      struct xml_string *_texture_name = xml_node_attribute_content(rchild, 0);
-      char texture_name[64] = {};
-      xml_string_copy(_texture_name, texture_name, xml_string_length(_texture_name));
+      struct xml_string *__texture_name = xml_node_attribute_content(rchild, 0);
+      char texture_name[128] = "";
+      xml_string_copy(__texture_name, texture_name, xml_string_length(__texture_name));
+      m->texture_map = realloc(m->texture_map, sizeof(TEXTURE) * (m->texture_c + 1));
+      char tpath[256] = "";
       strcat(tpath, ASSETS_DIR);
       strcat(tpath, LOCATION_DIR);
       strcat(tpath, texture_name);
       strcat(tpath, IMG_FILE_FORMAT);
-      m->texture_map = realloc(m->texture_map, sizeof(TEXTURE) * (m->texture_c + 1));
+      printf("%s\n", tpath);
       m->texture_map[m->texture_c].sprite = img(tpath);
       int ch_c = m->texture_map[m->texture_c].texture_c = xml_node_children(rchild);
       m->texture_map[m->texture_c].cords = calloc(ch_c, sizeof(short) + sizeof(short));
@@ -89,8 +90,8 @@ MAP *map_load(const char *map_name)
         struct xml_node *cord = xml_node_child(rchild, i);
         struct xml_string *cx = xml_node_attribute_content(rchild, 0);
         struct xml_string *cy = xml_node_attribute_content(rchild, 1);
-        char x[64] = {};
-        char y[64] = {};
+        char x[64] = "";
+        char y[64] = "";
         xml_string_copy(cx, x, xml_string_length(cx));
         xml_string_copy(cy, y, xml_string_length(cy));
 
