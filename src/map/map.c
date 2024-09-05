@@ -20,32 +20,22 @@ MAP *map_load(const char *map_name)
   strcat(path, map_name);
   strcat(path, MAP_FILE_FORMAT);
 
-  char * buffer = 0;
-  long length;
   FILE * f = fopen (path, "rb");
   if (!f) {
-    fprintf(stderr, "file: \"%s\" dont open\n", path);
+    fprintf(stderr, "file: \"%s\" doesn't open\n", path);
     exit(-1);
   }
-  fseek (f, 0, SEEK_END);
-  length = ftell (f);
-  fseek (f, 0, SEEK_SET);
-  buffer = malloc (length);
-  fread (buffer, 1, length, f);
-  fclose (f);
 
-  struct xml_document *d = xml_parse_document((uint8_t*)buffer, length);
+  struct xml_document *d = xml_open_document(f);
   if (!d) {
-    fprintf(stderr, "document: \"%s\" dont parse\nsrc: %s\n", path, buffer);
-    free(buffer);
+    fprintf(stderr, "document: \"%s\" doesn't open\n", path);
     free(m);
     return NULL;
   }
   struct xml_node *root = xml_document_root(d);
   int node_c = xml_node_children(root);
   if (node_c < 3) {
-      fprintf(stderr, "file: %s number of child nodes\n", path);
-      free(buffer);
+      fprintf(stderr, "file: \"%s\" number of child nodes\n", path);
       free(m);
       return NULL;
   }
@@ -58,7 +48,7 @@ MAP *map_load(const char *map_name)
     xml_string_copy(rchild_name, name, xml_string_length(rchild_name));
     xml_string_copy(rchild_content, content, xml_string_length(rchild_content));
 
-    if (!strcmp(name, "Width")) { //TODO: string ecuvelas
+    if (!strcmp(name, "Width")) {
       m->w = strtol(content, NULL, 10);
     }
     else if (!strcmp(name, "Height")) {
@@ -82,7 +72,6 @@ MAP *map_load(const char *map_name)
       strcat(tpath, LOCATION_DIR);
       strcat(tpath, texture_name);
       strcat(tpath, IMG_FILE_FORMAT);
-      printf("%s\n", tpath);
       m->texture_map[m->texture_c].sprite = img(tpath);
       int ch_c = m->texture_map[m->texture_c].texture_c = xml_node_children(rchild);
       m->texture_map[m->texture_c].cords = calloc(ch_c, sizeof(short) + sizeof(short));
@@ -102,13 +91,11 @@ MAP *map_load(const char *map_name)
     }
     else {
       fprintf(stderr, "handler for %s not found in file: %s\n", name, path);
-      free(buffer);
       free(m);
       return NULL;
     }
   }
 
-  free(buffer);
   xml_document_free(d, false);
   return m;
 }

@@ -2,12 +2,12 @@
   <Width>128</Width>
   <Height>256</Height>
   <Background>void/void</Background>
-  <Texture name=void/void>
-    <cords x=10 y=12/>
-    <cords x=12 y=10/>
+  <Texture name="void/void">
+    <cords x="10" y="12"/>
+    <cords x="12" y="10"/>
   </Texture>
-  <Texture name=void/void>
-    <cords x=20 y=2/>
-    <cords x=1 y=10/>
+  <Texture name="void/void">
+    <cords x="20" y="2"/>
+    <cords x="1" y="10"/>
   </Texture>
 </Map>

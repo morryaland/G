@@ -45,4 +45,5 @@ void Test_entity(CuTest *tc)
   CuAssertIntEquals(tc, e->local_id, entity.local_id);
   CuAssertIntEquals(tc, e->flags.colision, entity.flags.colision);
   CuAssertStrEquals(tc, entity_get_name(e), NAME_PLAYER);
+  CuAssertPtrNotNull(tc, entity_get_sprite(e));
 }
