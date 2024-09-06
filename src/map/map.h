@@ -14,9 +14,9 @@ typedef struct _map {
   short w, h;
   short texture_c;
   short entity_c;
-  SDL_Surface *background;
   TEXTURE *texture_map;
   GLOBAL_ENTITY *entity;
+  SDL_Surface *background;
   struct{
     unsigned char loop:1; /* the entity teleports to the other side of the map */
   } flags;

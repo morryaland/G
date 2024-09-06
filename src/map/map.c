@@ -6,21 +6,23 @@
 #include "../xml.h"
 #include "map.h"
 
-MAP *map_load(const char *map_name)
+static MAP *map_init(const char *name)
 {
   MAP *m = malloc(sizeof(MAP));
   m->texture_map = NULL;
   m->entity = NULL;
-  strcpy(m->location_map_name, map_name);
+  strcpy(m->location_map_name, name);
   m->texture_c = m->entity_c = 0;
+  return m;
+}
 
+MAP *map_load(const char *map_name)
+{
+  MAP *m = map_init(map_name);
   char path[256] = "";
-  strcat(path, ASSETS_DIR);
-  strcat(path, LOCATION_DIR);
-  strcat(path, map_name);
-  strcat(path, MAP_FILE_FORMAT);
+  strcat(path, ASSETS_DIR); strcat(path, LOCATION_DIR); strcat(path, map_name); strcat(path, MAP_FILE_FORMAT);
 
-  FILE * f = fopen (path, "rb");
+  FILE *f = fopen(path, "rb");
   if (!f) {
     fprintf(stderr, "file: \"%s\" doesn't open\n", path);
     exit(-1);
@@ -32,6 +34,7 @@ MAP *map_load(const char *map_name)
     free(m);
     return NULL;
   }
+
   struct xml_node *root = xml_document_root(d);
   int node_c = xml_node_children(root);
   if (node_c < 3) {
@@ -39,6 +42,7 @@ MAP *map_load(const char *map_name)
       free(m);
       return NULL;
   }
+
   for (int i = 0; i < node_c; i++) {
     struct xml_node *rchild = xml_node_child(root, i);
     struct xml_string *rchild_name = xml_node_name(rchild);
@@ -63,8 +67,8 @@ MAP *map_load(const char *map_name)
       m->background = img(bpath);
     }
     else if (!strcmp(name, "Texture")) {
-      struct xml_string *__texture_name = xml_node_attribute_content(rchild, 0);
       char texture_name[128] = "";
+      struct xml_string *__texture_name = xml_node_attribute_content(rchild, 0);
       xml_string_copy(__texture_name, texture_name, xml_string_length(__texture_name));
       m->texture_map = realloc(m->texture_map, sizeof(TEXTURE) * (m->texture_c + 1));
       char tpath[256] = "";

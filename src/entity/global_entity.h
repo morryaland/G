@@ -17,6 +17,8 @@ typedef struct _global_entity {
   SDL_Surface **sprites;
 } GLOBAL_ENTITY;
 
+GLOBAL_ENTITY *global_entity_init(char *name, unsigned short id, ENTITY *e_list, unsigned short e_c, SDL_Surface **s, unsigned char s_c);
+
 void global_entity_destroy(GLOBAL_ENTITY *e);
 
 #endif
