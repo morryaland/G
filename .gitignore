@@ -50,3 +50,12 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+.ccls
+.ccls-cache/
+Makefile
+tests/Makefile
+autom4te.cache/
+config.log
+configure~
+tests/test
