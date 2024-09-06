@@ -1,49 +1,38 @@
 #include <stdlib.h>
+#include "global_entity.h"
 #include "entity.h"
 
-GLOBAL_ENTITY *entity_list;
-
-void entity_list_init()
+GLOBAL_ENTITY *global_entity_init(char *name, unsigned short id, ENTITY *e_list, unsigned short e_c, SDL_Surface **s, unsigned char s_c)
 {
-  entity_list = (GLOBAL_ENTITY[ENTITY_MAX]){};
-  entity_list[ID_ERROR]  = (GLOBAL_ENTITY){ .name = NAME_ERROR,  .id = ID_ERROR,  .state_c = 1,
-    .sprites = (SDL_Surface*[]){ IMG_ERROR }};
-  entity_list[ID_PLAYER] = (GLOBAL_ENTITY){ .name = NAME_PLAYER, .id = ID_PLAYER, .state_c = 4,
-    .sprites = (SDL_Surface*[]){ IMG_PLAYER_BACK, IMG_PLAYER_FORWARD, IMG_PLAYER_LEFT, IMG_PLAYER_RIGHT }};
+  GLOBAL_ENTITY *ge = malloc(sizeof(GLOBAL_ENTITY));
+  ge->entities = e_list;
+  ge->entity_c = e_c;
+  ge->sprites = s;
+  ge->state_c = s_c;
+  strcpy(ge->name, name);
+  return ge;
 }
 
-ENTITY *entity_init(short local_id, short id )
+ENTITY *entity_init(short local_id)
 {
   ENTITY *e = malloc(sizeof(ENTITY));
   e->local_id = local_id;
-  e->id = id;
   e->x = e->y = 0;
   e->flags.colision = 1;
   return e;
 }
 
-char *entity_get_name(ENTITY *e)
+void entity_destroy(ENTITY *e)
 {
-  if (!entity_list) {
-    fprintf(stderr, "entity list doesn't init\n");
-    return NULL;
-  }
-  if (!e) {
-    fprintf(stderr, "entity doesn't init\n");
-    return NULL;
-  }
-  return entity_list[e->id].name;
+  free(e);
 }
 
-SDL_Surface *entity_update_sprite(ENTITY *e)
+void global_entity_destory(GLOBAL_ENTITY *e)
 {
-  if (!entity_list) {
-    fprintf(stderr, "entity list doesn't init\n");
-    return NULL;
+  free(e->entities);
+  for (int i = 0; i < e->state_c; i++) {
+    SDL_free(e->sprites[i]);
   }
-  if (!e) {
-    fprintf(stderr, "entity doesn't init\n");
-    return NULL;
-  }
-  return entity_list[e->id].sprites[e->state];
+  free(e->sprites);
+  free(e);
 }

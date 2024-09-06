@@ -22,28 +22,3 @@ void Test_map_load(CuTest *tc)
   CuAssertIntEquals(tc, load_map->h, test_map.h);
   CuAssertStrEquals(tc, load_map->location_map_name, test_map.location_map_name);
 }
-
-void Test_entity(CuTest *tc)
-{
-  ENTITY entity = {
-    .x = 1,
-    .y = 2,
-    .id = ID_PLAYER,
-    .local_id = 0,
-    .state = 0,
-    .flags.colision = 1
-  };
-  entity_list_init();
-  ENTITY *e = entity_init(0, ID_PLAYER);
-  e->x = 1;
-  e->y = 2;
-  e->state = 0;
-  CuAssertIntEquals(tc, e->x, entity.x);
-  CuAssertIntEquals(tc, e->y, entity.y);
-  CuAssertIntEquals(tc, e->state, entity.state);
-  CuAssertIntEquals(tc, e->id, entity.id);
-  CuAssertIntEquals(tc, e->local_id, entity.local_id);
-  CuAssertIntEquals(tc, e->flags.colision, entity.flags.colision);
-  CuAssertStrEquals(tc, entity_get_name(e), NAME_PLAYER);
-  CuAssertPtrNotNull(tc, entity_get_sprite(e));
-}

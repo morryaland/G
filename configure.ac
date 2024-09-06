@@ -5,6 +5,7 @@ AC_PROG_CC
 AC_PROG_MKDIR_P
 
 AC_CONFIG_FILES(Makefile)
+AC_CONFIG_FILES(tests/Makefile)
 
 LDFLAGS="-L/usr/local/lib -lSDL2 -lSDL2_image"
 

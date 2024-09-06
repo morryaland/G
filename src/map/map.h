@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <SDL2/SDL_surface.h>
 #include "texture.h"
-#include "../entity/entity.h"
+#include "../entity/global_entity.h"
 
 /* Game map
  *
@@ -16,7 +16,7 @@ typedef struct _map {
   short entity_c;
   SDL_Surface *background;
   TEXTURE *texture_map;
-  ENTITY *entity;
+  GLOBAL_ENTITY *entity;
   struct{
     unsigned char loop:1; /* the entity teleports to the other side of the map */
   } flags;

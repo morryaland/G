@@ -8,7 +8,6 @@
 
 
 extern void Test_map_load(CuTest*);
-extern void Test_entity(CuTest*);
 
 
 void RunAllTests(void) 
@@ -18,7 +17,6 @@ void RunAllTests(void)
 
 
     SUITE_ADD_TEST(suite, Test_map_load);
-    SUITE_ADD_TEST(suite, Test_entity);
 
     CuSuiteRun(suite);
     CuSuiteSummary(suite, output);

@@ -1,13 +1,11 @@
 #ifndef __ENTITY_H__
 #define __ENTITY_H__
 
-#include "global_entity.h"
-
 /* Game entity
  *
  * */
 typedef struct _entity {
-  unsigned short id, local_id;
+  unsigned short local_id;
   unsigned char state;
   float x, y;
   struct {
@@ -16,12 +14,8 @@ typedef struct _entity {
 } ENTITY;
 
 /* создаёт новую сущность */
-ENTITY *entity_init(short local_id, short id );
+ENTITY *entity_init(short local_id);
 
-/* получает глобальное имя сущьности */
-char *entity_get_name(ENTITY *e);
-
-/* получает спрайт сущности */
-SDL_Surface *entity_get_sprite(ENTITY *e);
+void entity_destroy(ENTITY *e);
 
 #endif
