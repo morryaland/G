@@ -12,7 +12,7 @@ typedef struct _texture {
   SDL_Surface *sprite;
 } TEXTURE;
 
-TEXTURE *texture_load(SDL_Surface *s, unsigned short t_c, struct { short x, y; } *cords);
+TEXTURE *texture_load(SDL_Surface *s, unsigned short t_c, void *cords);
 
 void texture_unload(TEXTURE **t);
 

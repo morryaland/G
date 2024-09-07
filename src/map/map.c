@@ -4,7 +4,25 @@
 #include <assert.h>
 #include "../define.h"
 #include "../xml.h"
+#include "texture.h"
 #include "map.h"
+
+TEXTURE *texture_load(SDL_Surface *s, unsigned short t_c, void *cords)
+{
+  TEXTURE *t = malloc(sizeof(TEXTURE));
+  t->sprite = s;
+  t->texture_c = t_c;
+  t->cords = cords;
+  return t;
+}
+
+void texture_unload(TEXTURE **t)
+{
+  SDL_free((**t).sprite);
+  free((**t).cords);
+  free(*t);
+  *t = NULL;
+}
 
 static MAP *map_init(const char *name)
 {
@@ -70,15 +88,14 @@ MAP *map_load(const char *map_name)
       char texture_name[128] = "";
       struct xml_string *__texture_name = xml_node_attribute_content(rchild, 0);
       xml_string_copy(__texture_name, texture_name, xml_string_length(__texture_name));
-      m->texture_map = realloc(m->texture_map, sizeof(TEXTURE) * (m->texture_c + 1));
+      m->texture_map = realloc(m->texture_map, sizeof(TEXTURE*) * (m->texture_c + 1));
       char tpath[256] = "";
       strcat(tpath, ASSETS_DIR);
       strcat(tpath, LOCATION_DIR);
       strcat(tpath, texture_name);
       strcat(tpath, IMG_FILE_FORMAT);
-      m->texture_map[m->texture_c].sprite = img(tpath);
-      int ch_c = m->texture_map[m->texture_c].texture_c = xml_node_children(rchild);
-      m->texture_map[m->texture_c].cords = calloc(ch_c, sizeof(short) + sizeof(short));
+      int ch_c = xml_node_children(rchild);
+      struct { short x, y; } *cords = calloc(ch_c, sizeof(short) + sizeof(short));
       for (int i = 0; i < ch_c; i++) {
         struct xml_node *cord = xml_node_child(rchild, i);
         struct xml_string *cx = xml_node_attribute_content(rchild, 0);
@@ -88,10 +105,14 @@ MAP *map_load(const char *map_name)
         xml_string_copy(cx, x, xml_string_length(cx));
         xml_string_copy(cy, y, xml_string_length(cy));
 
-        m->texture_map[m->texture_c].cords[i].x = strtol(x, NULL, 10);
-        m->texture_map[m->texture_c].cords[i].y = strtol(y, NULL, 10);
+        cords[i].x = strtol(x, NULL, 10);
+        cords[i].y = strtol(y, NULL, 10);
       }
+      m->texture_map[m->texture_c] = texture_load(img(tpath), ch_c, cords);
       m->texture_c++;
+    }
+    else if (!strcmp(name, "GlobalEntity")) {
+
     }
     else {
       fprintf(stderr, "handler for %s not found in file: %s\n", name, path);
@@ -108,8 +129,7 @@ void map_unload(MAP **m)
 {
   SDL_free((**m).background);
   for (int i = 0; i < (**m).texture_c; i++) {
-    free((**m).texture_map[i].cords);
-    SDL_free((**m).texture_map[i].sprite);
+    texture_unload(&(**m).texture_map[i]);
   }
   free((**m).texture_map);
   free(*m);
