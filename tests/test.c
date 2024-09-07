@@ -18,7 +18,12 @@ void Test_map_load(CuTest *tc)
   CuAssertPtrNotNull(tc, load_map->texture_map);
   CuAssertPtrNotNull(tc, load_map->texture_map[0]->sprite);
   CuAssertPtrNotNull(tc, load_map->texture_map[0]->cords);
+  CuAssertIntEquals(tc, load_map->texture_map[0]->cords[0].x, 1);
   CuAssertIntEquals(tc, load_map->w, test_map.w);
   CuAssertIntEquals(tc, load_map->h, test_map.h);
   CuAssertStrEquals(tc, load_map->location_map_name, test_map.location_map_name);
+}
+
+void Test_valgrind(CuTest *tc)
+{
 }

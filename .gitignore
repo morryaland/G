@@ -59,3 +59,4 @@ autom4te.cache/
 config.log
 configure~
 tests/test
+bin/G

@@ -6,6 +6,7 @@ all: $(TARGET)
 
 run: $(TARGET)
 	./$(TARGET)
+	valgrind $(TARGET)
 
 $(TARGET): generate.c test.c CuTest.c
 	$(CC) -o $@ $(LDFLAGS) $(CFLAGS) $(OBJ) $^

@@ -18,6 +18,8 @@ TEXTURE *texture_load(SDL_Surface *s, unsigned short t_c, void *cords)
 
 void texture_unload(TEXTURE **t)
 {
+  if (!*t)
+    return;
   SDL_free((**t).sprite);
   free((**t).cords);
   free(*t);
@@ -88,7 +90,6 @@ MAP *map_load(const char *map_name)
       char texture_name[128] = "";
       struct xml_string *__texture_name = xml_node_attribute_content(rchild, 0);
       xml_string_copy(__texture_name, texture_name, xml_string_length(__texture_name));
-      m->texture_map = realloc(m->texture_map, sizeof(TEXTURE*) * (m->texture_c + 1));
       char tpath[256] = "";
       strcat(tpath, ASSETS_DIR);
       strcat(tpath, LOCATION_DIR);
@@ -98,8 +99,8 @@ MAP *map_load(const char *map_name)
       struct { short x, y; } *cords = calloc(ch_c, sizeof(short) + sizeof(short));
       for (int i = 0; i < ch_c; i++) {
         struct xml_node *cord = xml_node_child(rchild, i);
-        struct xml_string *cx = xml_node_attribute_content(rchild, 0);
-        struct xml_string *cy = xml_node_attribute_content(rchild, 1);
+        struct xml_string *cx = xml_node_attribute_content(cord, 0);
+        struct xml_string *cy = xml_node_attribute_content(cord, 1);
         char x[64] = "";
         char y[64] = "";
         xml_string_copy(cx, x, xml_string_length(cx));
@@ -108,6 +109,7 @@ MAP *map_load(const char *map_name)
         cords[i].x = strtol(x, NULL, 10);
         cords[i].y = strtol(y, NULL, 10);
       }
+      m->texture_map = realloc(m->texture_map, sizeof(TEXTURE*) * (m->texture_c + 1));
       m->texture_map[m->texture_c] = texture_load(img(tpath), ch_c, cords);
       m->texture_c++;
     }
@@ -127,6 +129,8 @@ MAP *map_load(const char *map_name)
 
 void map_unload(MAP **m)
 {
+  if (!*m)
+    return;
   SDL_free((**m).background);
   for (int i = 0; i < (**m).texture_c; i++) {
     texture_unload(&(**m).texture_map[i]);
