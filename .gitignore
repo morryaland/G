@@ -60,3 +60,4 @@ config.log
 configure~
 tests/test
 bin/G
+tests/generate.c

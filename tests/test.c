@@ -22,8 +22,21 @@ void Test_map_load(CuTest *tc)
   CuAssertIntEquals(tc, load_map->w, test_map.w);
   CuAssertIntEquals(tc, load_map->h, test_map.h);
   CuAssertStrEquals(tc, load_map->location_map_name, test_map.location_map_name);
+  SDL_FreeSurface(test_map.background);
+  map_unload(&load_map);
 }
 
-void Test_valgrind(CuTest *tc)
+void Valgrind_texture()
 {
+  /* Texture test */
+  struct { short x, y; } *c = calloc(2, sizeof(float) + sizeof(float));
+  TEXTURE *t = texture_load(img(ASSETS_DIR LOCATION_DIR MAP_NAME IMG_FILE_FORMAT), 2, c);
+  texture_unload(&t);
+}
+
+void Valgrind_map()
+{
+  /* Map test */
+  MAP *m = map_load(MAP_NAME);
+  map_unload(&m);
 }

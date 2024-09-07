@@ -23,6 +23,10 @@ cat $FILES | grep '^void Test' |
         -e 's/$/(CuTest*);/' \
         -e 's/^/extern /'
 
+cat $FILES | grep '^void Valgrind' | 
+    sed -e 's/(.*$//' \
+        -e 's/$/();/'
+
 echo \
 '
 
@@ -38,6 +42,7 @@ cat $FILES | grep '^void Test' |
         -e 's/^/    SUITE_ADD_TEST(suite, /' \
         -e 's/$/);/'
 
+
 echo \
 '
     CuSuiteRun(suite);
@@ -51,5 +56,14 @@ echo \
 int main(void)
 {
     RunAllTests();
+'
+
+cat $FILES | grep '^void Valgrind' | 
+    sed -e 's/^void //' \
+        -e 's/(.*$//' \
+        -e 's/$/();/'
+
+echo \
+'
 }
 '

@@ -422,7 +422,7 @@ gives unlimited permission to copy, distribute and modify it."
 
 ac_pwd='/home/muly/code/G'
 srcdir='.'
-MKDIR_P='/usr/bin/mkdir -p'
+MKDIR_P='./install-sh -c -d'
 test -n "$AWK" || AWK=awk
 # The default lists apply if the user does not specify any file.
 ac_need_defaults=:
@@ -578,7 +578,7 @@ echo 'BEGIN {' >"$ac_tmp/subs1.awk" &&
 cat >>"$ac_tmp/subs1.awk" <<\_ACAWK &&
 S["LTLIBOBJS"]=""
 S["LIBOBJS"]=""
-S["MKDIR_P"]="/usr/bin/mkdir -p"
+S["MKDIR_P"]="./install-sh -c -d"
 S["OBJEXT"]="o"
 S["EXEEXT"]=""
 S["ac_ct_CC"]="gcc"

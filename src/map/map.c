@@ -7,25 +7,6 @@
 #include "texture.h"
 #include "map.h"
 
-TEXTURE *texture_load(SDL_Surface *s, unsigned short t_c, void *cords)
-{
-  TEXTURE *t = malloc(sizeof(TEXTURE));
-  t->sprite = s;
-  t->texture_c = t_c;
-  t->cords = cords;
-  return t;
-}
-
-void texture_unload(TEXTURE **t)
-{
-  if (!*t)
-    return;
-  SDL_free((**t).sprite);
-  free((**t).cords);
-  free(*t);
-  *t = NULL;
-}
-
 static MAP *map_init(const char *name)
 {
   MAP *m = malloc(sizeof(MAP));
@@ -51,6 +32,7 @@ MAP *map_load(const char *map_name)
   struct xml_document *d = xml_open_document(f);
   if (!d) {
     fprintf(stderr, "document: \"%s\" doesn't open\n", path);
+    xml_document_free(d, true);
     free(m);
     return NULL;
   }
@@ -59,6 +41,7 @@ MAP *map_load(const char *map_name)
   int node_c = xml_node_children(root);
   if (node_c < 3) {
       fprintf(stderr, "file: \"%s\" number of child nodes\n", path);
+      xml_document_free(d, true);
       free(m);
       return NULL;
   }
@@ -114,16 +97,17 @@ MAP *map_load(const char *map_name)
       m->texture_c++;
     }
     else if (!strcmp(name, "GlobalEntity")) {
-
+      //TODO
     }
     else {
       fprintf(stderr, "handler for %s not found in file: %s\n", name, path);
+      xml_document_free(d, true);
       free(m);
       return NULL;
     }
   }
 
-  xml_document_free(d, false);
+  xml_document_free(d, true);
   return m;
 }
 
@@ -131,7 +115,7 @@ void map_unload(MAP **m)
 {
   if (!*m)
     return;
-  SDL_free((**m).background);
+  SDL_FreeSurface((**m).background);
   for (int i = 0; i < (**m).texture_c; i++) {
     texture_unload(&(**m).texture_map[i]);
   }

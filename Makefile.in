@@ -15,10 +15,10 @@ LDFLAGS+= @LDFLAGS@
 
 .PHONY: all test clean
 
-all: $(TARGET)
+all: $(BIN_PATH)/$(TARGET)
 
-$(TARGET): $(OBJ)
-	$(CC) -o $(BIN_PATH)/$@ $(LDFLAGS) $(CFLAGS) $^
+$(BIN_PATH)/$(TARGET): $(OBJ)
+	$(CC) -o $@ $(LDFLAGS) $(CFLAGS) $^
 
 test: $(OBJ_TEST)
 	$(MAKE) -C ./tests/ LDFLAGS="$(LDFLAGS)" CFLAGS="$(CFLAGS)" OBJ="$(OBJ_TEST)" run
