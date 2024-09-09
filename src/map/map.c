@@ -21,7 +21,7 @@ MAP *map_load(const char *map_name)
 {
   MAP *m = map_init(map_name);
   char path[256] = "";
-  strcat(path, ASSETS_DIR); strcat(path, LOCATION_DIR); strcat(path, map_name); strcat(path, MAP_FILE_FORMAT);
+  snprintf(path, sizeof(path), "%s%s%s%s", ASSETS_DIR, LOCATION_DIR, map_name, MAP_FILE_FORMAT);
 
   FILE *f = fopen(path, "rb");
   if (!f) {
@@ -54,18 +54,15 @@ MAP *map_load(const char *map_name)
     char content[256] = "";
     xml_string_copy(rchild_name, name, xml_string_length(rchild_name));
     xml_string_copy(rchild_content, content, xml_string_length(rchild_content));
-if (!strcmp(name, "Width")) {
+    if (!strcmp(name, "Width")) {
       m->w = strtol(content, NULL, 10);
     }
     else if (!strcmp(name, "Height")) {
       m->h = strtol(content, NULL, 10);
     }
     else if (!strcmp(name, "Background")) {
-      char bpath[256] = {};
-      strcat(bpath, ASSETS_DIR);
-      strcat(bpath, LOCATION_DIR);
-      strcat(bpath, content);
-      strcat(bpath, IMG_FILE_FORMAT);
+      char bpath[256] = "";
+      snprintf(bpath, sizeof(bpath), "%s%s%s%s", ASSETS_DIR, LOCATION_DIR, content, IMG_FILE_FORMAT);
       m->background = img(bpath);
     }
     else if (!strcmp(name, "Texture")) {
@@ -73,10 +70,8 @@ if (!strcmp(name, "Width")) {
       struct xml_string *__texture_name = xml_node_attribute_content(rchild, 0);
       xml_string_copy(__texture_name, texture_name, xml_string_length(__texture_name));
       char tpath[256] = "";
-      strcat(tpath, ASSETS_DIR);
-      strcat(tpath, LOCATION_DIR);
-      strcat(tpath, texture_name);
-      strcat(tpath, IMG_FILE_FORMAT);
+      snprintf(tpath, sizeof(tpath), "%s%s%s%s", ASSETS_DIR, LOCATION_DIR, texture_name, IMG_FILE_FORMAT);
+
       int ch_c = xml_node_children(rchild);
       struct { short x, y; } *cords = calloc(ch_c, sizeof(short) + sizeof(short));
       for (int i = 0; i < ch_c; i++) {
@@ -114,31 +109,33 @@ if (!strcmp(name, "Width")) {
         xml_string_copy(__gechild_name, gechild_name, xml_string_length(__gechild_name));
         xml_string_copy(__gechild_content, gechild_content, xml_string_length(__gechild_content));
         if (!strcmp(gechild_name, "Entity")) {
-          entity_list = realloc(entity_list, sizeof(ENTITY*) + (e_c + 1));
-          float __x, __y;
+          entity_list = realloc(entity_list, sizeof(ENTITY*) * (e_c + 1));
           struct xml_string *cx = xml_node_attribute_content(gechild, 0);
           struct xml_string *cy = xml_node_attribute_content(gechild, 1);
           char x[64] = "";
           char y[64] = "";
           xml_string_copy(cx, x, xml_string_length(cx));
           xml_string_copy(cy, y, xml_string_length(cy));
-          entity_list[e_c] = entity_init(e_c, strtof(x, NULL), strtof(y, NULL), NULL);
+          int flags = 0xFF;
+          entity_list[e_c] = entity_init(e_c, strtof(x, NULL), strtof(y, NULL), &flags);
           e_c++;
         }
         else if (!strcmp(gechild_name, "Sprite")) {
-          sprite_list = realloc(sprite_list, sizeof(SDL_Surface*) + (s_c + 1));
-          char spath[256] = {};
-          strcat(spath, ASSETS_DIR);
-          strcat(spath, ENTITY_DIR);
-          strcat(spath, gechild_name);
-          strcat(spath, gechild_content);
-          strcat(spath, IMG_FILE_FORMAT);
+          sprite_list = realloc(sprite_list, sizeof(SDL_Surface*) * (s_c + 1));
+          char spath[256] = "";
+          snprintf(spath, sizeof(spath), "%s%s%s%s%s%s", ASSETS_DIR, ENTITY_DIR, entity_name, "/", gechild_content, IMG_FILE_FORMAT);
           sprite_list[s_c] = img(spath);
           s_c++;
         }
+        else {
+          fprintf(stderr, "handler for %s not found in file: %s\n", gechild_name, path);
+          xml_document_free(d, true);
+          free(m);
+          return NULL;
+        }
       }
       GLOBAL_ENTITY *ge = global_entity_init(entity_name, entity_list, e_c, sprite_list, s_c);
-      m->entity = realloc(m->entity, sizeof(GLOBAL_ENTITY*) + (m->entity_c + 1));
+      m->entity = realloc(m->entity, sizeof(GLOBAL_ENTITY*) * (m->entity_c + 1));
       m->entity[m->entity_c] = ge;
       m->entity_c++;
     }
@@ -166,6 +163,7 @@ void map_unload(MAP **m)
     global_entity_destroy(&(**m).entity[i]);
   }
   free((**m).texture_map);
+  free((**m).entity);
   free(*m);
   *m = NULL;
 }

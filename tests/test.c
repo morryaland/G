@@ -19,11 +19,37 @@ void Test_map_load(CuTest *tc)
   CuAssertPtrNotNull(tc, load_map->texture_map[0]->sprite);
   CuAssertPtrNotNull(tc, load_map->texture_map[0]->cords);
   CuAssertIntEquals(tc, load_map->texture_map[0]->cords[0].x, 1);
+  CuAssertPtrNotNull(tc, load_map->entity);
+  CuAssertPtrNotNull(tc, load_map->entity[0]->entities);
+  CuAssertPtrNotNull(tc, load_map->entity[0]->sprites);
+  CuAssertPtrNotNull(tc, load_map->entity[0]->entities[0]);
+  CuAssertPtrNotNull(tc, load_map->entity[0]->sprites[0]);
   CuAssertIntEquals(tc, load_map->w, test_map.w);
   CuAssertIntEquals(tc, load_map->h, test_map.h);
   CuAssertStrEquals(tc, load_map->location_map_name, test_map.location_map_name);
   SDL_FreeSurface(test_map.background);
   map_unload(&load_map);
+}
+
+void Test_global_entity(CuTest *tc)
+{
+  /* Entity test */
+  ENTITY **e_list = malloc(sizeof(ENTITY*) * 2);
+  int flags = 0xFF;
+  e_list[0] = entity_init(0, 1.1, 34.4, &flags);
+  e_list[1] = entity_init(1, 2.3, -13, &flags);
+  SDL_Surface **s = malloc(sizeof(SDL_Surface*) * 1);
+  s[0] = img(ASSETS_DIR ENTITY_DIR "ERROR/ERROR" IMG_FILE_FORMAT);
+  GLOBAL_ENTITY *ge = global_entity_init("ERROR", e_list, 2, s, 1);
+  CuAssertPtrNotNull(tc, ge->entities);
+  CuAssertPtrNotNull(tc, ge->entities[0]);
+  CuAssertDblEquals(tc, ge->entities[0]->x, 1.1, 0.1);
+  CuAssertPtrNotNull(tc, ge->sprites);
+  CuAssertPtrNotNull(tc, ge->sprites[0]);
+  CuAssertStrEquals(tc, ge->name, "ERROR");
+  CuAssertIntEquals(tc, ge->state_c, 1);
+  CuAssertIntEquals(tc, ge->entity_c, 2);
+  global_entity_destroy(&ge);
 }
 
 void Valgrind_texture()

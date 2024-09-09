@@ -13,29 +13,25 @@ GLOBAL_ENTITY *global_entity_init(char *name, ENTITY **e_list, unsigned short e_
   return ge;
 }
 
-ENTITY *entity_init(short local_id)
+ENTITY *entity_init(short local_id, float x, float y, void *flags)
 {
   ENTITY *e = malloc(sizeof(ENTITY));
   e->local_id = local_id;
-  e->x = e->y = 0;
-  e->flags.colision = 1;
+  e->x = x;
+  e->y = y;
+  memcpy(&e->flags, flags, sizeof(e->flags));
   return e;
 }
 
-void entity_destroy(ENTITY **e)
-{
-  free(*e);
-  *e = NULL;
-}
-
-void global_entity_destory(GLOBAL_ENTITY **e)
+void global_entity_destroy(GLOBAL_ENTITY **e)
 {
   for (int i = 0; i < (**e).state_c; i++) {
-    SDL_free((**e).sprites[i]);
+    SDL_FreeSurface((**e).sprites[i]);
   }
   for (int i = 0; i < (**e).entity_c; i++) {
-    SDL_free((**e).entities[i]);
+    free((**e).entities[i]);
   }
   free((**e).sprites);
+  free((**e).entities);
   free(*e);
 }
