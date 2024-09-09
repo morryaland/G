@@ -14,8 +14,8 @@ typedef struct _entity {
 } ENTITY;
 
 /* создаёт новую сущность */
-ENTITY *entity_init(short local_id);
+ENTITY *entity_init(short local_id, float x, float y, void *flags);
 
-void entity_destroy(ENTITY *e);
+void entity_destroy(ENTITY **e);
 
 #endif

@@ -13,6 +13,6 @@
   <GlobalEntity name="ERROR">
     <Entity x="3.5" y="3.5"/>
     <Entity x="-3.5" y="-3.5"/>
-    <Sprite name="ERROR"/>
+    <Sprite>ERROR</Sprite>
   </GlobalEntity>
 </Map>
