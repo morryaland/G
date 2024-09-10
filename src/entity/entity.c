@@ -23,13 +23,19 @@ ENTITY *entity_init(short local_id, float x, float y, void *flags)
   return e;
 }
 
+void entity_destroy(ENTITY **e)
+{
+  free(*e);
+  *e = NULL;
+}
+
 void global_entity_destroy(GLOBAL_ENTITY **e)
 {
   for (int i = 0; i < (**e).state_c; i++) {
     SDL_FreeSurface((**e).sprites[i]);
   }
   for (int i = 0; i < (**e).entity_c; i++) {
-    free((**e).entities[i]);
+    entity_destroy(&(**e).entities[i]);
   }
   free((**e).sprites);
   free((**e).entities);
