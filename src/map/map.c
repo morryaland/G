@@ -20,7 +20,7 @@ static MAP *map_init(const char *name)
 MAP *map_load(const char *map_name)
 {
   MAP *m = map_init(map_name);
-  char path[256] = "";
+  char path[PATH_MAX] = "";
   snprintf(path, sizeof(path), "%s%s%s%s", ASSETS_DIR, LOCATION_DIR, map_name, MAP_FILE_FORMAT);
 
   FILE *f = fopen(path, "rb");
@@ -46,8 +46,8 @@ MAP *map_load(const char *map_name)
 
     struct xml_string *rchild_name = xml_node_name(rchild);
     struct xml_string *rchild_content = xml_node_content(rchild);
-    char name[64] = "";
-    char content[256] = "";
+    char name[NAME_MAX] = "";
+    char content[PATH_MAX] = "";
     xml_string_copy(rchild_name, name, xml_string_length(rchild_name));
     xml_string_copy(rchild_content, content, xml_string_length(rchild_content));
 
@@ -58,12 +58,12 @@ MAP *map_load(const char *map_name)
       m->h = strtol(content, NULL, 10);
     }
     else if (!strcmp(name, "Background")) {
-      char bpath[256] = "";
+      char bpath[PATH_MAX] = "";
       snprintf(bpath, sizeof(bpath), "%s%s%s%s", ASSETS_DIR, LOCATION_DIR, content, IMG_FILE_FORMAT);
       m->background = img(bpath);
     }
     else if (!strcmp(name, "Texture")) {
-      char texture_name[128] = "";
+      char texture_name[PATH_MAX] = "";
       struct xml_string *__texture_name = xml_node_attribute_content(rchild, 0);
       xml_string_copy(__texture_name, texture_name, xml_string_length(__texture_name));
       char tpath[256] = "";
@@ -75,8 +75,8 @@ MAP *map_load(const char *map_name)
         struct xml_node *cord = xml_node_child(rchild, i);
         struct xml_string *cx = xml_node_attribute_content(cord, 0);
         struct xml_string *cy = xml_node_attribute_content(cord, 1);
-        char x[64] = "";
-        char y[64] = "";
+        char x[10] = "";
+        char y[10] = "";
         xml_string_copy(cx, x, xml_string_length(cx));
         xml_string_copy(cy, y, xml_string_length(cy));
 
@@ -88,7 +88,7 @@ MAP *map_load(const char *map_name)
       m->texture_c++;
     }
     else if (!strcmp(name, "GlobalEntity")) {
-      char entity_name[128] = "";
+      char entity_name[PATH_MAX] = "";
       struct xml_string *__entity_name = xml_node_attribute_content(rchild, 0);
       xml_string_copy(__entity_name, entity_name, xml_string_length(__entity_name));
 
@@ -123,7 +123,7 @@ MAP *map_load(const char *map_name)
         }
         else if (!strcmp(gechild_name, "Sprite")) {
           sprite_list = realloc(sprite_list, sizeof(SDL_Surface*) * (s_c + 1));
-          char spath[256] = "";
+          char spath[PATH_MAX] = "";
           snprintf(spath, sizeof(spath), "%s%s%s%s%s%s", ASSETS_DIR, ENTITY_DIR, entity_name, "/", gechild_content, IMG_FILE_FORMAT);
           sprite_list[s_c] = img(spath);
           s_c++;

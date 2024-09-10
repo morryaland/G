@@ -6,4 +6,7 @@
 #define LOCATION_DIR "locations/"
 #define ENTITY_DIR "entities/"
 
+#define NAME_MAX 64
+#define PATH_MAX 256
+
 #define img(a) IMG_Load(a)

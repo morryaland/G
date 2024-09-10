@@ -23,6 +23,22 @@ ENTITY *entity_init(short local_id, float x, float y, void *flags)
   return e;
 }
 
+void entity_set_flags(ENTITY *e, void *flags)
+{
+  memcpy(&e->flags, flags, sizeof(e->flags));
+}
+
+void entity_set_state(ENTITY *e, unsigned char state)
+{
+  e->state = state;
+}
+
+void entity_move(ENTITY *e, float x, float y)
+{
+  e->x = x;
+  e->y = y;
+}
+
 void entity_destroy(ENTITY **e)
 {
   free(*e);
