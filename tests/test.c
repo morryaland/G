@@ -1,6 +1,7 @@
 #include "CuTest.h"
 #include "../src/map/map.h"
 #include "../src/entity/entity.h"
+#include "../src/player/player.h"
 
 #define MAP_NAME "void/void"
 
@@ -31,6 +32,17 @@ void Test_map_load(CuTest *tc)
   map_unload(&load_map);
 }
 
+void Test_player(CuTest *tc)
+{
+  player_init("void/void", 1.1, 2.2);
+  CuAssertStrEquals(tc, player->region_map_name, "void/void");
+  CuAssertIntEquals(tc, player->state_c, PLAYER_SPRITE);
+  CuAssertPtrNotNull(tc, player->sprites);
+  CuAssertPtrNotNull(tc, player->sprites[0]);
+  CuAssertPtrNotNull(tc, player->sprites[1]);
+  player_destroy();
+}
+
 void Test_global_entity(CuTest *tc)
 {
   /* Entity test */
@@ -50,6 +62,12 @@ void Test_global_entity(CuTest *tc)
   CuAssertIntEquals(tc, ge->state_c, 1);
   CuAssertIntEquals(tc, ge->entity_c, 2);
   global_entity_destroy(&ge);
+}
+
+void Valgrind_player()
+{
+  player_init("void/void", 1.1, 2.2);
+  player_destroy();
 }
 
 void Valgrind_texture()

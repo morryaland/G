@@ -19,7 +19,7 @@ ENTITY *entity_init(short local_id, float x, float y, void *flags)
   e->local_id = local_id;
   e->x = x;
   e->y = y;
-  memcpy(&e->flags, flags, sizeof(e->flags));
+  entity_set_flags(e, flags);
   return e;
 }
 
