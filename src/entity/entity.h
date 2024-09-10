@@ -8,15 +8,11 @@ typedef struct _entity {
   unsigned short local_id;
   unsigned char state;
   float x, y;
-  struct {
-    unsigned char colision:1;
-  } flags;
+  int flags;
 } ENTITY;
 
 /* создаёт новую сущность */
-ENTITY *entity_init(short local_id, float x, float y, void *flags);
-
-void entity_set_flags(ENTITY *e, void *flags);
+ENTITY *entity_init(short local_id, float x, float y, int flags);
 
 void entity_set_state(ENTITY *e, unsigned char state);
 

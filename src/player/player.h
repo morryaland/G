@@ -9,9 +9,7 @@ typedef struct _player {
   unsigned char state_c;
   SDL_Surface **sprites;
   char region_map_name[PATH_MAX]; /* location/map */
-  struct {
-    unsigned char colision:1;
-  } flags;
+  int flags;
 } PLAYER;
 
 extern PLAYER *player;
@@ -19,8 +17,6 @@ extern PLAYER *player;
 void player_init(char *start_map, float x, float y);
 
 void player_set_map(char *map_name);
-
-void player_set_flags(void *flags);
 
 void player_set_state(unsigned char state);
 

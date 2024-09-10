@@ -13,19 +13,14 @@ GLOBAL_ENTITY *global_entity_init(char *name, ENTITY **e_list, unsigned short e_
   return ge;
 }
 
-ENTITY *entity_init(short local_id, float x, float y, void *flags)
+ENTITY *entity_init(short local_id, float x, float y, int flags)
 {
   ENTITY *e = malloc(sizeof(ENTITY));
   e->local_id = local_id;
   e->x = x;
   e->y = y;
-  entity_set_flags(e, flags);
+  e->flags = flags;
   return e;
-}
-
-void entity_set_flags(ENTITY *e, void *flags)
-{
-  memcpy(&e->flags, flags, sizeof(e->flags));
 }
 
 void entity_set_state(ENTITY *e, unsigned char state)

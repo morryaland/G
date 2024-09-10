@@ -8,6 +8,7 @@ void player_init(char *start_map, float x, float y)
   player_set_map(start_map);
   player_move(x, y);
   player->state = 0;
+  player->flags = 0xFF;
   player->state_c = PLAYER_SPRITE;
   player->sprites = malloc(sizeof(SDL_Surface*) * PLAYER_SPRITE);
   char ipath[PATH_MAX];
@@ -15,11 +16,6 @@ void player_init(char *start_map, float x, float y)
     snprintf(ipath, sizeof(ipath), "%s%sp%d%s", ASSETS_DIR, PLAYER_DIR, i + 1, IMG_FILE_FORMAT);
     player->sprites[i] = img(ipath);
   }
-}
-
-void player_set_flags(void *flags)
-{
-  memcpy(&player->flags, flags, sizeof(player->flags));
 }
 
 void player_set_state(unsigned char state)

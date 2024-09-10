@@ -28,5 +28,6 @@ $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 	$(CC) -c $< -o $@ $(CFLAGS)
 
 clean:
-	$(MAKE) -C ./tests/ clean
 	rm -fr $(OBJ_PATH)
+	rm $(BIN_PATH)/$(TARGET)
+	$(MAKE) -C ./tests/ clean

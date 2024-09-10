@@ -48,8 +48,8 @@ void Test_global_entity(CuTest *tc)
   /* Entity test */
   ENTITY **e_list = malloc(sizeof(ENTITY*) * 2);
   int flags = 0xFF;
-  e_list[0] = entity_init(0, 1.1, 34.4, &flags);
-  e_list[1] = entity_init(1, 2.3, -13, &flags);
+  e_list[0] = entity_init(0, 1.1, 34.4, flags);
+  e_list[1] = entity_init(1, 2.3, -13, flags);
   SDL_Surface **s = malloc(sizeof(SDL_Surface*) * 1);
   s[0] = img(ASSETS_DIR ENTITY_DIR "ERROR/ERROR" IMG_FILE_FORMAT);
   GLOBAL_ENTITY *ge = global_entity_init("ERROR", e_list, 2, s, 1);

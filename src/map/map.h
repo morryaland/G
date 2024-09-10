@@ -17,9 +17,7 @@ typedef struct _map {
   TEXTURE **texture_map;
   GLOBAL_ENTITY **entity;
   SDL_Surface *background;
-  struct{
-    unsigned char loop:1; /* the entity teleports to the other side of the map */
-  } flags;
+  int flags;
 } MAP;
 
 MAP *map_load(const char *name);

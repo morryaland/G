@@ -117,8 +117,7 @@ MAP *map_load(const char *map_name)
           xml_string_copy(cx, x, xml_string_length(cx));
           xml_string_copy(cy, y, xml_string_length(cy));
 
-          int flags = 0xFF;
-          entity_list[e_c] = entity_init(e_c, strtof(x, NULL), strtof(y, NULL), &flags);
+          entity_list[e_c] = entity_init(e_c, strtof(x, NULL), strtof(y, NULL), 0xFF);
           e_c++;
         }
         else if (!strcmp(gechild_name, "Sprite")) {
