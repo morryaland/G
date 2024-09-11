@@ -6,6 +6,7 @@
 
 extern SDL_Window *game_window;
 extern SDL_Renderer *game_renderer;
+extern SDL_Event game_window_event;
 
 void sdl_init();
 
