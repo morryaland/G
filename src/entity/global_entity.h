@@ -14,10 +14,10 @@ typedef struct _global_entity {
   unsigned short entity_c;
   unsigned char state_c;
   ENTITY **entities;
-  SDL_Surface **sprites;
+  IMG_Animation **sprites;
 } GLOBAL_ENTITY;
 
-GLOBAL_ENTITY *global_entity_init(char *name, ENTITY **e_list, unsigned short e_c, SDL_Surface **s, unsigned char s_c);
+GLOBAL_ENTITY *global_entity_init(char *name, ENTITY **e_list, unsigned short e_c, IMG_Animation **s, unsigned char s_c);
 
 void global_entity_destroy(GLOBAL_ENTITY **e);
 

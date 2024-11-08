@@ -11,7 +11,7 @@ OBJ = $(patsubst $(SRC_PATH)/%.c, $(OBJ_PATH)/%.o,$(SRC))
 OBJ_TEST = $(filter-out $(OBJ_PATH)/main.o, $(OBJ))
 
 CFLAGS+= @CFLAGS@
-LDFLAGS+= @LDFLAGS@
+LDFLAGS+= -L/usr/local/lib -lSDL2 -lSDL2_image -DLOAD_GIF @LDFLAGS@
 
 .PHONY: all test clean
 

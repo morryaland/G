@@ -2,7 +2,7 @@
 #include "global_entity.h"
 #include "entity.h"
 
-GLOBAL_ENTITY *global_entity_init(char *name, ENTITY **e_list, unsigned short e_c, SDL_Surface **s, unsigned char s_c)
+GLOBAL_ENTITY *global_entity_init(char *name, ENTITY **e_list, unsigned short e_c, IMG_Animation **s, unsigned char s_c)
 {
   GLOBAL_ENTITY *ge = malloc(sizeof(GLOBAL_ENTITY));
   ge->entities = e_list;
@@ -43,7 +43,7 @@ void entity_destroy(ENTITY **e)
 void global_entity_destroy(GLOBAL_ENTITY **e)
 {
   for (int i = 0; i < (**e).state_c; i++) {
-    SDL_FreeSurface((**e).sprites[i]);
+    IMG_FreeAnimation((**e).sprites[i]);
   }
   for (int i = 0; i < (**e).entity_c; i++) {
     entity_destroy(&(**e).entities[i]);

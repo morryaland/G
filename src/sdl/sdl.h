@@ -4,12 +4,20 @@
 #include <SDL2/SDL.h>
 #include "../map/map.h"
 
+typedef struct _camera {
+  SDL_Point cords;
+  float f;
+} CAMERA;
+
 extern SDL_Window *game_window;
 extern SDL_Renderer *game_renderer;
 extern SDL_Event game_window_event;
+extern CAMERA game_camera;
+
+void screen_proection();
 
 void sdl_init();
 
-void render_map();
+void render_map(MAP *(*m)());
 
 #endif

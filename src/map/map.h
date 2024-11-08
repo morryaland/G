@@ -16,7 +16,7 @@ typedef struct _map {
   short entity_c;
   TEXTURE **texture_map;
   GLOBAL_ENTITY **entity;
-  SDL_Surface *background;
+  IMG_Animation *background;
   int flags;
 } MAP;
 

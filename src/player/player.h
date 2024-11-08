@@ -7,14 +7,14 @@ typedef struct _player {
   float x, y;
   unsigned char state;
   unsigned char state_c;
-  SDL_Surface **sprites;
+  IMG_Animation **sprites;
   char region_map_name[PATH_MAX]; /* location/map */
   int flags;
 } PLAYER;
 
 extern PLAYER *player;
 
-void player_init(char *start_map, float x, float y);
+void player_init(char *default_map, float x, float y);
 
 void player_set_map(char *map_name);
 

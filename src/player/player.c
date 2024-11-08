@@ -2,15 +2,15 @@
 
 PLAYER *player;
 
-void player_init(char *start_map, float x, float y)
+void player_init(char *default_map, float x, float y)
 {
   player = malloc(sizeof(PLAYER));
-  player_set_map(start_map);
+  player_set_map(default_map);
   player_move(x, y);
   player->state = 0;
   player->flags = 0xFF;
   player->state_c = PLAYER_SPRITE;
-  player->sprites = malloc(sizeof(SDL_Surface*) * PLAYER_SPRITE);
+  player->sprites = malloc(sizeof(IMG_Animation*) * PLAYER_SPRITE);
   char ipath[PATH_MAX];
   for (int i = 0; i < PLAYER_SPRITE; i++) {
     snprintf(ipath, sizeof(ipath), "%s%sp%d%s", ASSETS_DIR, PLAYER_DIR, i + 1, IMG_FILE_FORMAT);
@@ -37,7 +37,7 @@ void player_move(float x, float y)
 void player_destroy()
 {
   for (int i = 0; i < PLAYER_SPRITE; i++) {
-    SDL_FreeSurface(player->sprites[i]);
+    IMG_FreeAnimation(player->sprites[i]);
   }
   free(player->sprites);
   free(player);

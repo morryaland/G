@@ -28,7 +28,7 @@ void Test_map_load(CuTest *tc)
   CuAssertIntEquals(tc, load_map->w, test_map.w);
   CuAssertIntEquals(tc, load_map->h, test_map.h);
   CuAssertStrEquals(tc, load_map->location_map_name, test_map.location_map_name);
-  SDL_FreeSurface(test_map.background);
+  IMG_FreeAnimation(test_map.background);
   map_unload(&load_map);
 }
 
@@ -45,12 +45,11 @@ void Test_player(CuTest *tc)
 
 void Test_global_entity(CuTest *tc)
 {
-  /* Entity test */
   ENTITY **e_list = malloc(sizeof(ENTITY*) * 2);
   int flags = 0xFF;
   e_list[0] = entity_init(0, 1.1, 34.4, flags);
   e_list[1] = entity_init(1, 2.3, -13, flags);
-  SDL_Surface **s = malloc(sizeof(SDL_Surface*) * 1);
+  IMG_Animation **s = malloc(sizeof(IMG_Animation*) * 1);
   s[0] = img(ASSETS_DIR ENTITY_DIR "ERROR/ERROR" IMG_FILE_FORMAT);
   GLOBAL_ENTITY *ge = global_entity_init("ERROR", e_list, 2, s, 1);
   CuAssertPtrNotNull(tc, ge->entities);

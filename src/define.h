@@ -14,4 +14,4 @@
 #define PATH_MAX 256
 #define PLAYER_SPRITE 4
 
-#define img(a) IMG_Load(a)
+#define img(a) IMG_LoadAnimation(a)

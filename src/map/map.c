@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
+#include "../sdl/sdl.h"
 #include "../define.h"
 #include "../xml.h"
 #include "texture.h"
@@ -96,7 +97,7 @@ MAP *map_load(const char *map_name)
       unsigned short e_c, s_c;
       e_c = s_c = 0;
       ENTITY **entity_list = NULL;
-      SDL_Surface **sprite_list = NULL;
+      IMG_Animation **sprite_list = NULL;
       for (int i = 0; i < ch_c; i++) {
         struct xml_node *gechild = xml_node_child(rchild, i);
 
@@ -121,7 +122,7 @@ MAP *map_load(const char *map_name)
           e_c++;
         }
         else if (!strcmp(gechild_name, "Sprite")) {
-          sprite_list = realloc(sprite_list, sizeof(SDL_Surface*) * (s_c + 1));
+          sprite_list = realloc(sprite_list, sizeof(IMG_Animation*) * (s_c + 1));
           char spath[PATH_MAX] = "";
           snprintf(spath, sizeof(spath), "%s%s%s%s%s%s", ASSETS_DIR, ENTITY_DIR, entity_name, "/", gechild_content, IMG_FILE_FORMAT);
           sprite_list[s_c] = img(spath);
@@ -156,7 +157,7 @@ void map_unload(MAP **m)
   if (!*m)
     return;
   if ((**m).background)
-    SDL_FreeSurface((**m).background);
+    IMG_FreeAnimation((**m).background);
   if ((**m).texture_map) {
     for (int i = 0; i < (**m).texture_c; i++) {
       texture_unload(&(**m).texture_map[i]);
