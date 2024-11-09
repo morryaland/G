@@ -2,7 +2,7 @@
 #define __MAP_H__
 
 #include <stdio.h>
-#include <SDL2/SDL_surface.h>
+#include "../sdl/gif.h"
 #include "texture.h"
 #include "../entity/global_entity.h"
 
@@ -16,7 +16,7 @@ typedef struct _map {
   short entity_c;
   TEXTURE **texture_map;
   GLOBAL_ENTITY **entity;
-  IMG_Animation *background;
+  GIF_ANIMATION *background;
   int flags;
 } MAP;
 

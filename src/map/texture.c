@@ -1,7 +1,7 @@
 
 #include "texture.h"
 
-TEXTURE *texture_load(IMG_Animation *s, unsigned short t_c, void *cords)
+TEXTURE *texture_load(GIF_ANIMATION *s, unsigned short t_c, void *cords)
 {
   TEXTURE *t = malloc(sizeof(TEXTURE));
   t->sprite = s;
@@ -14,7 +14,7 @@ void texture_unload(TEXTURE **t)
 {
   if (!*t)
     return;
-  IMG_FreeAnimation((**t).sprite);
+  gif_unload(&(**t).sprite);
   free((**t).cords);
   free(*t);
   *t = NULL;

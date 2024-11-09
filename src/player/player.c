@@ -14,7 +14,7 @@ void player_init(char *default_map, float x, float y)
   char ipath[PATH_MAX];
   for (int i = 0; i < PLAYER_SPRITE; i++) {
     snprintf(ipath, sizeof(ipath), "%s%sp%d%s", ASSETS_DIR, PLAYER_DIR, i + 1, IMG_FILE_FORMAT);
-    player->sprites[i] = img(ipath);
+    player->sprites[i] = gif_load(ipath);
   }
 }
 
@@ -37,7 +37,7 @@ void player_move(float x, float y)
 void player_destroy()
 {
   for (int i = 0; i < PLAYER_SPRITE; i++) {
-    IMG_FreeAnimation(player->sprites[i]);
+    gif_unload(&player->sprites[i]);
   }
   free(player->sprites);
   free(player);

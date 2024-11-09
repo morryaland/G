@@ -13,5 +13,3 @@
 #define NAME_MAX 64
 #define PATH_MAX 256
 #define PLAYER_SPRITE 4
-
-#define img(a) IMG_LoadAnimation(a)

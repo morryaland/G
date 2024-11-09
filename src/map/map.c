@@ -61,7 +61,7 @@ MAP *map_load(const char *map_name)
     else if (!strcmp(name, "Background")) {
       char bpath[PATH_MAX] = "";
       snprintf(bpath, sizeof(bpath), "%s%s%s%s", ASSETS_DIR, LOCATION_DIR, content, IMG_FILE_FORMAT);
-      m->background = img(bpath);
+      m->background = gif_load(bpath);
     }
     else if (!strcmp(name, "Texture")) {
       char texture_name[PATH_MAX] = "";
@@ -85,7 +85,7 @@ MAP *map_load(const char *map_name)
         cords[i].y = strtol(y, NULL, 10);
       }
       m->texture_map = realloc(m->texture_map, sizeof(TEXTURE*) * (m->texture_c + 1));
-      m->texture_map[m->texture_c] = texture_load(img(tpath), ch_c, cords);
+      m->texture_map[m->texture_c] = texture_load(gif_load(tpath), ch_c, cords);
       m->texture_c++;
     }
     else if (!strcmp(name, "GlobalEntity")) {
@@ -97,7 +97,7 @@ MAP *map_load(const char *map_name)
       unsigned short e_c, s_c;
       e_c = s_c = 0;
       ENTITY **entity_list = NULL;
-      IMG_Animation **sprite_list = NULL;
+      GIF_ANIMATION **sprite_list = NULL;
       for (int i = 0; i < ch_c; i++) {
         struct xml_node *gechild = xml_node_child(rchild, i);
 
@@ -122,10 +122,10 @@ MAP *map_load(const char *map_name)
           e_c++;
         }
         else if (!strcmp(gechild_name, "Sprite")) {
-          sprite_list = realloc(sprite_list, sizeof(IMG_Animation*) * (s_c + 1));
+          sprite_list = realloc(sprite_list, sizeof(GIF_ANIMATION*) * (s_c + 1));
           char spath[PATH_MAX] = "";
           snprintf(spath, sizeof(spath), "%s%s%s%s%s%s", ASSETS_DIR, ENTITY_DIR, entity_name, "/", gechild_content, IMG_FILE_FORMAT);
-          sprite_list[s_c] = img(spath);
+          sprite_list[s_c] = gif_load(spath);
           s_c++;
         }
         else {
@@ -157,7 +157,7 @@ void map_unload(MAP **m)
   if (!*m)
     return;
   if ((**m).background)
-    IMG_FreeAnimation((**m).background);
+    gif_unload(&(**m).background);
   if ((**m).texture_map) {
     for (int i = 0; i < (**m).texture_c; i++) {
       texture_unload(&(**m).texture_map[i]);

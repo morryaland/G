@@ -10,7 +10,7 @@ void Test_map_load(CuTest *tc)
   MAP test_map = {
     .w = 128,
     .h = 256,
-    .background = img(ASSETS_DIR LOCATION_DIR MAP_NAME IMG_FILE_FORMAT),
+    .background = gif_load(ASSETS_DIR LOCATION_DIR MAP_NAME IMG_FILE_FORMAT),
     .location_map_name = MAP_NAME
   };
   MAP *load_map = map_load(MAP_NAME);
@@ -28,7 +28,7 @@ void Test_map_load(CuTest *tc)
   CuAssertIntEquals(tc, load_map->w, test_map.w);
   CuAssertIntEquals(tc, load_map->h, test_map.h);
   CuAssertStrEquals(tc, load_map->location_map_name, test_map.location_map_name);
-  IMG_FreeAnimation(test_map.background);
+  gif_unload(&test_map.background);
   map_unload(&load_map);
 }
 
@@ -49,8 +49,8 @@ void Test_global_entity(CuTest *tc)
   int flags = 0xFF;
   e_list[0] = entity_init(0, 1.1, 34.4, flags);
   e_list[1] = entity_init(1, 2.3, -13, flags);
-  IMG_Animation **s = malloc(sizeof(IMG_Animation*) * 1);
-  s[0] = img(ASSETS_DIR ENTITY_DIR "ERROR/ERROR" IMG_FILE_FORMAT);
+  GIF_ANIMATION **s = malloc(sizeof(GIF_ANIMATION*) * 1);
+  s[0] = gif_load(ASSETS_DIR ENTITY_DIR "ERROR/ERROR" IMG_FILE_FORMAT);
   GLOBAL_ENTITY *ge = global_entity_init("ERROR", e_list, 2, s, 1);
   CuAssertPtrNotNull(tc, ge->entities);
   CuAssertPtrNotNull(tc, ge->entities[0]);
@@ -73,7 +73,7 @@ void Valgrind_texture()
 {
   /* Texture test */
   struct { short x, y; } *c = calloc(2, sizeof(float) + sizeof(float));
-  TEXTURE *t = texture_load(img(ASSETS_DIR LOCATION_DIR MAP_NAME IMG_FILE_FORMAT), 2, c);
+  TEXTURE *t = texture_load(gif_load(ASSETS_DIR LOCATION_DIR MAP_NAME IMG_FILE_FORMAT), 2, c);
   texture_unload(&t);
 }
 

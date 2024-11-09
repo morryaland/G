@@ -1,13 +1,14 @@
 #ifndef __PLAYER_H__
 #define __PLAYER_H__
 
+#include "../sdl/gif.h"
 #include "../define.h"
 
 typedef struct _player {
   float x, y;
   unsigned char state;
   unsigned char state_c;
-  IMG_Animation **sprites;
+  GIF_ANIMATION **sprites;
   char region_map_name[PATH_MAX]; /* location/map */
   int flags;
 } PLAYER;
