@@ -5,7 +5,8 @@
 #include "../map/map.h"
 
 typedef struct _camera {
-  SDL_Point cords;
+  float x;
+  float y;
   float f;
 } CAMERA;
 
@@ -14,10 +15,11 @@ extern SDL_Renderer *game_renderer;
 extern SDL_Event game_window_event;
 extern CAMERA game_camera;
 
-void screen_proection();
+void campos();
 
 void sdl_init();
 
 void render_map(MAP *(*m)());
+void render_player();
 
 #endif

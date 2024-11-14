@@ -20,6 +20,8 @@ SDL_Texture *gif_animation(GIF_ANIMATION *a)
     a->time_start_frame = tn;
     a->t = SDL_CreateTextureFromSurface(game_renderer, a->a->frames[0]);
   }
+  if (a->a->count == 1)
+    return a->t;
   unsigned long delta_us = (double)(tn - a->time_start_frame) / fr * 1000;
   if (delta_us > a->a->delays[a->count]) {
     a->time_start_frame = tn;

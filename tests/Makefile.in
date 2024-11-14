@@ -14,4 +14,4 @@ generate.c: test.c
 	$(shell ./make-tests.sh test.c > generate.c)
 
 clean:
-	rm $(TARGET) generate.c
+	rm -f $(TARGET) generate.c

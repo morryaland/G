@@ -10,6 +10,8 @@
 #define ENTITY_DIR "entities/"
 #define PLAYER_DIR "player/"
 
+#define PIX_PER_UNIT 128
+
 #define NAME_MAX 64
 #define PATH_MAX 256
 #define PLAYER_SPRITE 4
