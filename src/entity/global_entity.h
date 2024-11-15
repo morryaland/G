@@ -10,7 +10,7 @@
  * */
 typedef struct _global_entity {
   char name[256];
-  unsigned short entity_c;
+  unsigned int entity_c;
   unsigned char state_c;
   ENTITY **entities;
   GIF_ANIMATION **sprites;

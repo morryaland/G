@@ -55,6 +55,8 @@ void Test_global_entity(CuTest *tc)
   CuAssertPtrNotNull(tc, ge->entities);
   CuAssertPtrNotNull(tc, ge->entities[0]);
   CuAssertDblEquals(tc, ge->entities[0]->x, 1.1, 0.1);
+  CuAssertDblEquals(tc, ge->entities[0]->w, 342, 0.1);
+  CuAssertDblEquals(tc, ge->entities[1]->h, 2, 0.1);
   CuAssertPtrNotNull(tc, ge->sprites);
   CuAssertPtrNotNull(tc, ge->sprites[0]);
   CuAssertStrEquals(tc, ge->name, "ERROR");

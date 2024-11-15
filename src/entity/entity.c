@@ -21,6 +21,7 @@ ENTITY *entity_init(short local_id, float x, float y, float w, float h, int flag
   e->y = y;
   e->w = w;
   e->h = h;
+  e->state = 0;
   e->flags = flags;
   return e;
 }

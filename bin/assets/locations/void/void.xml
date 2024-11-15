@@ -3,16 +3,16 @@
   <Height>256</Height>
   <Background>void/void</Background>
   <Texture name="void/void">
-    <Rectangle x="1" y="1" w="1" h="2"/>
-    <Rectangle x="2" y="2" w="1" h="2"/>
+    <Rectangle x="1" y="1" w="1" h="1"/>
+    <Rectangle x="2" y="2" w="1" h="1"/>
   </Texture>
   <Texture name="void/void">
-    <Rectangle x="-2" y="-2" w="1" h="2"/>
-    <Rectangle x="-1" y="-1" w="1" h="2"/>
+    <Rectangle x="-2" y="-2" w="1" h="1"/>
+    <Rectangle x="-1" y="-1" w="1" h="1"/>
   </Texture>
   <GlobalEntity name="ERROR">
-    <Entity x="3.5" y="3.5" w="1" h="1"></Entity>
-    <Entity x="-3.5" y="-3.5" w="1" h="1"></Entity>
+    <Entity x="4.5" y="3.5" w="1" h="1"></Entity>
+    <Entity x="-4.5" y="-3.5" w="1" h="1"></Entity>
     <Sprite>ERROR</Sprite>
   </GlobalEntity>
 </Map>

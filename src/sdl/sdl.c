@@ -55,6 +55,15 @@ void render_entity(MAP *(*m)())
 {
   MAP *map = m();
   SDL_Rect sp;
+  for (int i = 0; i < map->entity_c; i++)
+    for (int j = 0; j < map->entity[i]->entity_c; j++) {
+      float x = map->entity[i]->entities[j]->x;
+      float y = map->entity[i]->entities[j]->y;
+      float w = map->entity[i]->entities[j]->w;
+      float h = map->entity[i]->entities[j]->h;
+      screen_proection(&sp, x, y, w, h);
+      SDL_RenderCopy(game_renderer, gif_animation(map->entity[i]->sprites[map->entity[i]->entities[j]->state]), NULL, &sp);
+    }
 }
 
 void render_player()

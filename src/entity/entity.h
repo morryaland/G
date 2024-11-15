@@ -5,7 +5,7 @@
  *
  * */
 typedef struct _entity {
-  unsigned short local_id;
+  unsigned int local_id;
   unsigned char state;
   float x, y, w, h;
   int flags;
