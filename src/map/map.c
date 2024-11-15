@@ -132,6 +132,9 @@ MAP *map_load(const char *map_name)
           xml_string_copy(cw, w, xml_string_length(cw));
           xml_string_copy(ch, h, xml_string_length(ch));
 
+          char luapath[PATH_MAX] = "";        
+          snprintf(luapath, sizeof(luapath), "%s%s%s%s%s%s", ASSETS_DIR, ENTITY_DIR, entity_name, "/", gechild_content, LUA_FILE_FORMAT);
+
           entity_list[e_c] = entity_init(e_c, strtof(x, NULL), strtof(y, NULL), strtof(w, NULL), strtof(h, NULL), 0xFF);
           e_c++;
         }

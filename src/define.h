@@ -5,6 +5,7 @@
 
 #define IMG_FILE_FORMAT ".gif"
 #define MAP_FILE_FORMAT ".xml"
+#define LUA_FILE_FORMAT ".lua"
 #define ASSETS_DIR "./assets/"
 #define LOCATION_DIR "locations/"
 #define ENTITY_DIR "entities/"
