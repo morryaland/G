@@ -71,21 +71,29 @@ MAP *map_load(const char *map_name)
       snprintf(tpath, sizeof(tpath), "%s%s%s%s", ASSETS_DIR, LOCATION_DIR, texture_name, IMG_FILE_FORMAT);
 
       int ch_c = xml_node_children(rchild);
-      struct { short x, y; } *cords = calloc(ch_c, sizeof(short) + sizeof(short));
+      struct { int x, y, w, h; } *rs = calloc(ch_c, sizeof(struct { int x, y, w, h; }));
       for (int i = 0; i < ch_c; i++) {
-        struct xml_node *cord = xml_node_child(rchild, i);
-        struct xml_string *cx = xml_node_attribute_content(cord, 0);
-        struct xml_string *cy = xml_node_attribute_content(cord, 1);
+        struct xml_node *r = xml_node_child(rchild, i);
+        struct xml_string *cx = xml_node_attribute_content(r, 0);
+        struct xml_string *cy = xml_node_attribute_content(r, 1);
+        struct xml_string *cw = xml_node_attribute_content(r, 2);
+        struct xml_string *ch = xml_node_attribute_content(r, 3);
         char x[10] = "";
         char y[10] = "";
+        char w[10] = "";
+        char h[10] = "";
         xml_string_copy(cx, x, xml_string_length(cx));
         xml_string_copy(cy, y, xml_string_length(cy));
+        xml_string_copy(cw, w, xml_string_length(cw));
+        xml_string_copy(ch, h, xml_string_length(ch));
 
-        cords[i].x = strtol(x, NULL, 10);
-        cords[i].y = strtol(y, NULL, 10);
+        rs[i].x = strtol(x, NULL, 10);
+        rs[i].y = strtol(y, NULL, 10);
+        rs[i].w = strtol(w, NULL, 10);
+        rs[i].h = strtol(h, NULL, 10);
       }
       m->texture_map = realloc(m->texture_map, sizeof(TEXTURE*) * (m->texture_c + 1));
-      m->texture_map[m->texture_c] = texture_load(gif_load(tpath), ch_c, cords);
+      m->texture_map[m->texture_c] = texture_load(gif_load(tpath), ch_c, rs);
       m->texture_c++;
     }
     else if (!strcmp(name, "GlobalEntity")) {
@@ -113,12 +121,18 @@ MAP *map_load(const char *map_name)
 
           struct xml_string *cx = xml_node_attribute_content(gechild, 0);
           struct xml_string *cy = xml_node_attribute_content(gechild, 1);
+          struct xml_string *cw = xml_node_attribute_content(gechild, 2);
+          struct xml_string *ch = xml_node_attribute_content(gechild, 3);
           char x[64] = "";
           char y[64] = "";
+          char w[64] = "";
+          char h[64] = "";
           xml_string_copy(cx, x, xml_string_length(cx));
           xml_string_copy(cy, y, xml_string_length(cy));
+          xml_string_copy(cw, w, xml_string_length(cw));
+          xml_string_copy(ch, h, xml_string_length(ch));
 
-          entity_list[e_c] = entity_init(e_c, strtof(x, NULL), strtof(y, NULL), 0xFF);
+          entity_list[e_c] = entity_init(e_c, strtof(x, NULL), strtof(y, NULL), strtof(w, NULL), strtof(h, NULL), 0xFF);
           e_c++;
         }
         else if (!strcmp(gechild_name, "Sprite")) {

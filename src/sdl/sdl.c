@@ -13,16 +13,15 @@ void campos()
   game_camera.y = player->y;
 }
 
-SDL_Rect *screen_proection(SDL_Rect *r)
+void screen_proection(SDL_Rect *sp, float x, float y, float w, float h)
 {
-  int w, h;
-  SDL_GetWindowSize(game_window, &w, &h);
+  int ww, wh;
+  SDL_GetWindowSize(game_window, &ww, &wh);
   float f = (float)PIX_PER_UNIT / game_camera.f;
-  r->x = r->x * f - game_camera.x * f + w / 2 - f / 2;
-  r->y = r->y * f - game_camera.y * f + h / 2 - f / 2;
-  r->w *= f;
-  r->h *= f;
-  return r;
+  sp->x = x * f - game_camera.x * f + ww / 2 - f / 2;
+  sp->y = y * f - game_camera.y * f + wh / 2 - f / 2;
+  sp->w = w * f;
+  sp->h = h * f;
 }
 
 void sdl_init()
@@ -37,17 +36,30 @@ void sdl_init()
 void render_map(MAP *(*m)())
 { 
   MAP *map = m();
+  SDL_Rect sp;
   /* Background */
-  SDL_RenderCopy(game_renderer, gif_animation(map->background), NULL, screen_proection(&(SDL_Rect){.x = -map->w / 2, .y = -map->h / 2, .w = map->w, .h = map->h}));
+  screen_proection(&sp, -map->w / 2, -map->h / 2, map->w, map->h);
+  SDL_RenderCopy(game_renderer, gif_animation(map->background), NULL, &sp);
   for (int i = 0; i < map->texture_c; i++)
     for (int j = 0; j < map->texture_map[i]->texture_c; j++) {
-      short x = map->texture_map[i]->cords[j].x;
-      short y = map->texture_map[i]->cords[j].y;
-      SDL_RenderCopy(game_renderer, gif_animation(map->texture_map[i]->sprite), NULL, screen_proection(&(SDL_Rect){.x = x, .y = y, .w = 1, .h = 1}));
+      int x = map->texture_map[i]->cords[j].x;
+      int y = map->texture_map[i]->cords[j].y;
+      int w = map->texture_map[i]->cords[j].w;
+      int h = map->texture_map[i]->cords[j].h;
+      screen_proection(&sp, x, y, w, h);
+      SDL_RenderCopy(game_renderer, gif_animation(map->texture_map[i]->sprite), NULL, &sp);
     }
+}
+
+void render_entity(MAP *(*m)())
+{
+  MAP *map = m();
+  SDL_Rect sp;
 }
 
 void render_player()
 {
-  SDL_RenderCopy(game_renderer, gif_animation(player->sprites[player->state]), NULL, screen_proection(&(SDL_Rect){.x = player->x, .y = player->y, .w = 1, .h = 1}));
+  SDL_Rect sp;
+  screen_proection(&sp, player->x, player->y, player->w, player->h);
+  SDL_RenderCopy(game_renderer, gif_animation(player->sprites[player->state]), NULL, &sp);
 }

@@ -8,7 +8,7 @@
  * */
 typedef struct _texture {
   unsigned short texture_c;
-  struct { short x, y; } *cords;
+  struct { int x, y, w, h; } *cords;
   GIF_ANIMATION *sprite;
 } TEXTURE;
 

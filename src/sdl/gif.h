@@ -4,8 +4,11 @@
 #include <SDL2/SDL_image.h>
 
 typedef struct {
-  IMG_Animation *a;
-  SDL_Texture *t;
+  SDL_Texture **t;
+  int *d;
+  int h;
+  int w;
+  unsigned long len;
   unsigned long count;
   unsigned long time_start_frame;
 } GIF_ANIMATION;

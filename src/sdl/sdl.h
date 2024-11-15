@@ -20,6 +20,9 @@ void campos();
 void sdl_init();
 
 void render_map(MAP *(*m)());
+
+void render_entity(MAP *(*m)());
+
 void render_player();
 
 #endif

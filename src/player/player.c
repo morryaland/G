@@ -2,11 +2,13 @@
 
 PLAYER *player;
 
-void player_init(char *default_map, float x, float y)
+void player_init(char *default_map, float x, float y, float w, float h)
 {
   player = malloc(sizeof(PLAYER));
   player_set_map(default_map);
   player_move(x, y);
+  player->w = w;
+  player->h = h;
   player->state = 0;
   player->flags = 0xFF;
   player->state_c = PLAYER_SPRITE;

@@ -7,12 +7,12 @@
 typedef struct _entity {
   unsigned short local_id;
   unsigned char state;
-  float x, y;
+  float x, y, w, h;
   int flags;
 } ENTITY;
 
 /* создаёт новую сущность */
-ENTITY *entity_init(short local_id, float x, float y, int flags);
+ENTITY *entity_init(short local_id, float x, float y, float w, float h, int flags);
 
 void entity_set_state(ENTITY *e, unsigned char state);
 

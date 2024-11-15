@@ -34,7 +34,7 @@ void Test_map_load(CuTest *tc)
 
 void Test_player(CuTest *tc)
 {
-  player_init("void/void", 1.1, 2.2);
+  player_init("void/void", 1.1, 2.2, 2, 3);
   CuAssertStrEquals(tc, player->region_map_name, "void/void");
   CuAssertIntEquals(tc, player->state_c, PLAYER_SPRITE);
   CuAssertPtrNotNull(tc, player->sprites);
@@ -47,8 +47,8 @@ void Test_global_entity(CuTest *tc)
 {
   ENTITY **e_list = malloc(sizeof(ENTITY*) * 2);
   int flags = 0xFF;
-  e_list[0] = entity_init(0, 1.1, 34.4, flags);
-  e_list[1] = entity_init(1, 2.3, -13, flags);
+  e_list[0] = entity_init(0, 1.1, 34.4, 342, 4, flags);
+  e_list[1] = entity_init(1, 2.3, -13, 4, 2, flags);
   GIF_ANIMATION **s = malloc(sizeof(GIF_ANIMATION*) * 1);
   s[0] = gif_load(ASSETS_DIR ENTITY_DIR "ERROR/ERROR" IMG_FILE_FORMAT);
   GLOBAL_ENTITY *ge = global_entity_init("ERROR", e_list, 2, s, 1);
@@ -65,7 +65,7 @@ void Test_global_entity(CuTest *tc)
 
 void Valgrind_player()
 {
-  player_init("void/void", 1.1, 2.2);
+  player_init("void/void", 1.1, 2.2, 3, 4);
   player_destroy();
 }
 

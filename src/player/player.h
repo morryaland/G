@@ -5,7 +5,7 @@
 #include "../define.h"
 
 typedef struct _player {
-  float x, y;
+  float x, y, w, h;
   unsigned char state;
   unsigned char state_c;
   GIF_ANIMATION **sprites;
@@ -15,7 +15,7 @@ typedef struct _player {
 
 extern PLAYER *player;
 
-void player_init(char *default_map, float x, float y);
+void player_init(char *default_map, float x, float y, float w, float h);
 
 void player_set_map(char *map_name);
 

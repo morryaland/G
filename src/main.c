@@ -5,7 +5,7 @@
 int main()
 {
   sdl_init();
-  player_init("void/void", 0, 0);
+  player_init("void/void", 0, 0, 1, 1);
   float count;
   for (;;) {
     count++;
@@ -19,16 +19,16 @@ int main()
       }
       switch (game_window_event.key.keysym.sym) {
         case SDLK_RIGHT:
-          player_move(player->x + 1, player->y);
+          player_move(player->x + 0.5, player->y);
           break;
         case SDLK_LEFT:
-          player_move(player->x - 1, player->y);
+          player_move(player->x - 0.5, player->y);
           break;
         case SDLK_DOWN:
-          player_move(player->x, player->y + 1);
+          player_move(player->x, player->y + 0.5);
           break;
         case SDLK_UP:
-          player_move(player->x, player->y - 1);
+          player_move(player->x, player->y - 0.5);
           break;
       }
     }
@@ -36,6 +36,7 @@ int main()
     campos();
     render_map(player_map);
     render_player();
+    render_entity(player_map);
     SDL_RenderPresent(game_renderer);
   }
   return 0;
