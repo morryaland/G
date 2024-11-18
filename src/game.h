@@ -4,6 +4,16 @@
 #include "map/map.h"
 #include "player/player.h"
 
+typedef struct _camera {
+  float x;
+  float y;
+  float f;
+} CAMERA;
+
+extern CAMERA game_camera;
+
+void cam_move(float x, float y);
+
 MAP *player_map();
 
 #endif

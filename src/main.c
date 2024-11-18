@@ -6,9 +6,7 @@ int main()
 {
   sdl_init();
   player_init("void/void", 0, 0, 1, 1);
-  float count;
   for (;;) {
-    count++;
     while (SDL_PollEvent(&game_window_event)) {
       switch (game_window_event.type) {
         case SDL_QUIT:
@@ -33,7 +31,7 @@ int main()
       }
     }
     SDL_RenderClear(game_renderer);
-    campos();
+    cam_move(player->x, player->x);
     render_map(player_map);
     render_player();
     render_entity(player_map);

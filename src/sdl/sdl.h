@@ -3,19 +3,11 @@
 
 #include <SDL2/SDL.h>
 #include "../map/map.h"
-
-typedef struct _camera {
-  float x;
-  float y;
-  float f;
-} CAMERA;
+#include "../game.h"
 
 extern SDL_Window *game_window;
 extern SDL_Renderer *game_renderer;
 extern SDL_Event game_window_event;
-extern CAMERA game_camera;
-
-void campos();
 
 void sdl_init();
 

@@ -1,6 +1,13 @@
 #include "game.h"
 
+CAMERA game_camera;
 static MAP *load_map;
+
+void cam_move(float x, float y)
+{
+  game_camera.x = x;
+  game_camera.y = y;
+}
 
 MAP *player_map()
 {

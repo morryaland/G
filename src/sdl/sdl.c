@@ -5,13 +5,6 @@
 SDL_Window *game_window;
 SDL_Renderer *game_renderer;
 SDL_Event game_window_event;
-CAMERA game_camera;
-
-void campos()
-{
-  game_camera.x = player->x;
-  game_camera.y = player->y;
-}
 
 void screen_proection(SDL_Rect *sp, float x, float y, float w, float h)
 {
