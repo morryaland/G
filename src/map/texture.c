@@ -1,4 +1,3 @@
-
 #include "texture.h"
 
 TEXTURE *texture_load(GIF_ANIMATION *s, unsigned short t_c, void *cords)

@@ -5,340 +5,322 @@
  -->
 <!-- Title: source tree Pages: 1 -->
 <svg width="576pt" height="719pt"
- viewBox="0.00 0.00 576.00 718.96" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(0.520796 0.520796) rotate(0) translate(4 1376.5)">
+ viewBox="0.00 0.00 576.00 718.92" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.540338 0.540338) rotate(0) translate(4 1326.5)">
 <title>source tree</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-1376.5 1102,-1376.5 1102,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-1326.5 1062,-1326.5 1062,4 -4,4"/>
 <g id="clust1" class="cluster">
 <title>clustersrc</title>
-<polygon fill="none" stroke="black" points="114,-44.45 114,-886.29 480,-886.29 480,-44.45 114,-44.45"/>
-<text text-anchor="middle" x="297" y="-867.09" font-family="Helvetica,sans-Serif" font-size="16.00">src</text>
+<polygon fill="none" stroke="black" points="391,-32.4 391,-646.06 758,-646.06 758,-32.4 391,-32.4"/>
+<text text-anchor="middle" x="574.5" y="-626.86" font-family="Helvetica,sans-Serif" font-size="16.00">src</text>
 </g>
 <g id="clust2" class="cluster">
 <title>clustersrc/sdl</title>
-<polygon fill="none" stroke="black" points="736,-44.45 736,-886.29 884,-886.29 884,-44.45 736,-44.45"/>
-<text text-anchor="middle" x="810" y="-867.09" font-family="Helvetica,sans-Serif" font-size="16.00">src/sdl</text>
+<polygon fill="none" stroke="black" points="205,-32.4 205,-646.06 353,-646.06 353,-32.4 205,-32.4"/>
+<text text-anchor="middle" x="279" y="-626.86" font-family="Helvetica,sans-Serif" font-size="16.00">src/sdl</text>
 </g>
 <g id="clust3" class="cluster">
 <title>clustersrc/player</title>
-<polygon fill="none" stroke="black" points="8,-44.45 8,-886.29 106,-886.29 106,-44.45 8,-44.45"/>
-<text text-anchor="middle" x="57" y="-867.09" font-family="Helvetica,sans-Serif" font-size="16.00">src/player</text>
+<polygon fill="none" stroke="black" points="796,-32.4 796,-646.06 894,-646.06 894,-32.4 796,-32.4"/>
+<text text-anchor="middle" x="845" y="-626.86" font-family="Helvetica,sans-Serif" font-size="16.00">src/player</text>
 </g>
 <g id="clust4" class="cluster">
 <title>clustersrc/map</title>
-<polygon fill="none" stroke="black" points="520,-44.45 520,-1328.05 728,-1328.05 728,-44.45 520,-44.45"/>
-<text text-anchor="middle" x="624" y="-1308.85" font-family="Helvetica,sans-Serif" font-size="16.00">src/map</text>
+<polygon fill="none" stroke="black" points="8,-324.04 8,-1290.1 197,-1290.1 197,-324.04 8,-324.04"/>
+<text text-anchor="middle" x="102.5" y="-1270.9" font-family="Helvetica,sans-Serif" font-size="16.00">src/map</text>
 </g>
 <g id="clust5" class="cluster">
 <title>clustersrc/entity</title>
-<polygon fill="none" stroke="black" points="922,-44.45 922,-1328.05 1090,-1328.05 1090,-44.45 922,-44.45"/>
-<text text-anchor="middle" x="1006" y="-1308.85" font-family="Helvetica,sans-Serif" font-size="16.00">src/entity</text>
+<polygon fill="none" stroke="black" points="902,-32.4 902,-968.08 1050,-968.08 1050,-32.4 902,-32.4"/>
+<text text-anchor="middle" x="976" y="-948.88" font-family="Helvetica,sans-Serif" font-size="16.00">src/entity</text>
 </g>
 <!-- game.h -->
 <g id="node1" class="node">
 <title>game.h</title>
-<ellipse fill="none" stroke="black" cx="350" cy="-188.45" rx="38.56" ry="18"/>
-<text text-anchor="middle" x="350" y="-183.4" font-family="Times,serif" font-size="14.00">game.h</text>
+<ellipse fill="none" stroke="black" cx="438" cy="-137.4" rx="38.56" ry="18"/>
+<text text-anchor="middle" x="438" y="-132.35" font-family="Times,serif" font-size="14.00">game.h</text>
 </g>
 <!-- player.h -->
 <g id="node4" class="node">
 <title>player.h</title>
-<ellipse fill="none" stroke="black" cx="57" cy="-188.45" rx="40.6" ry="18"/>
-<text text-anchor="middle" x="57" y="-183.4" font-family="Times,serif" font-size="14.00">player.h</text>
+<ellipse fill="none" stroke="black" cx="845" cy="-137.4" rx="40.6" ry="18"/>
+<text text-anchor="middle" x="845" y="-132.35" font-family="Times,serif" font-size="14.00">player.h</text>
 </g>
 <!-- game.h&#45;&gt;player.h -->
-<g id="edge3" class="edge">
+<g id="edge12" class="edge">
 <title>game.h&#45;&gt;player.h</title>
-<path fill="none" stroke="black" d="M311.1,-188.45C243.79,-188.45 176.47,-188.45 109.16,-188.45"/>
-<polygon fill="black" stroke="black" points="109.43,-184.95 99.43,-188.45 109.43,-191.95 109.43,-184.95"/>
+<path fill="none" stroke="black" d="M453.28,-153.93C483.88,-185.68 556.45,-254.27 634,-279.4 684.31,-295.71 706.53,-304.67 753,-279.4 797.05,-255.45 823.26,-200.31 835.84,-166.22"/>
+<polygon fill="black" stroke="black" points="839.08,-167.56 839.08,-156.97 832.47,-165.24 839.08,-167.56"/>
 </g>
 <!-- map.h -->
 <g id="node7" class="node">
 <title>map.h</title>
-<ellipse fill="none" stroke="black" cx="686" cy="-589.45" rx="34.46" ry="18"/>
-<text text-anchor="middle" x="686" y="-584.4" font-family="Times,serif" font-size="14.00">map.h</text>
+<ellipse fill="none" stroke="black" cx="155" cy="-751.4" rx="34.46" ry="18"/>
+<text text-anchor="middle" x="155" y="-746.35" font-family="Times,serif" font-size="14.00">map.h</text>
 </g>
 <!-- game.h&#45;&gt;map.h -->
-<g id="edge12" class="edge">
+<g id="edge19" class="edge">
 <title>game.h&#45;&gt;map.h</title>
-<path fill="none" stroke="black" d="M363.45,-205.42C415.35,-267.06 602.91,-489.78 665.5,-564.11"/>
-<polygon fill="black" stroke="black" points="662.73,-566.26 671.85,-571.65 668.09,-561.75 662.73,-566.26"/>
+<path fill="none" stroke="black" d="M436.48,-155.72C431.39,-207.62 412.08,-365.55 357,-482.9 309.71,-583.66 220.34,-683.17 178.15,-727.06"/>
+<polygon fill="black" stroke="black" points="175.88,-724.38 171.43,-733.99 180.9,-729.25 175.88,-724.38"/>
 </g>
 <!-- main.c -->
 <g id="node2" class="node">
 <title>main.c</title>
-<ellipse fill="none" stroke="black" cx="259" cy="-589.45" rx="36.51" ry="18"/>
-<text text-anchor="middle" x="259" y="-584.4" font-family="Times,serif" font-size="14.00">main.c</text>
+<ellipse fill="none" stroke="black" cx="436" cy="-429.4" rx="36.51" ry="18"/>
+<text text-anchor="middle" x="436" y="-424.35" font-family="Times,serif" font-size="14.00">main.c</text>
 </g>
 <!-- main.c&#45;&gt;game.h -->
-<g id="edge21" class="edge">
+<g id="edge18" class="edge">
 <title>main.c&#45;&gt;game.h</title>
-<path fill="none" stroke="black" d="M262.91,-571.31C277.09,-509.15 325.88,-295.23 343.55,-217.75"/>
-<polygon fill="black" stroke="black" points="346.96,-218.54 345.77,-208.01 340.13,-216.98 346.96,-218.54"/>
+<path fill="none" stroke="black" d="M436.12,-411.13C436.45,-362.88 437.39,-226.29 437.8,-166.74"/>
+<polygon fill="black" stroke="black" points="441.3,-167.12 437.87,-157.1 434.3,-167.08 441.3,-167.12"/>
 </g>
 <!-- sdl.h -->
 <g id="node3" class="node">
 <title>sdl.h</title>
-<ellipse fill="none" stroke="black" cx="773" cy="-188.45" rx="28.83" ry="18"/>
-<text text-anchor="middle" x="773" y="-183.4" font-family="Times,serif" font-size="14.00">sdl.h</text>
+<ellipse fill="none" stroke="black" cx="316" cy="-137.4" rx="28.83" ry="18"/>
+<text text-anchor="middle" x="316" y="-132.35" font-family="Times,serif" font-size="14.00">sdl.h</text>
 </g>
 <!-- main.c&#45;&gt;sdl.h -->
-<g id="edge32" class="edge">
+<g id="edge9" class="edge">
 <title>main.c&#45;&gt;sdl.h</title>
-<path fill="none" stroke="black" d="M277.9,-573.78C356.27,-512.95 655.77,-280.45 746.68,-209.88"/>
-<polygon fill="black" stroke="black" points="748.58,-212.84 754.33,-203.94 744.29,-207.31 748.58,-212.84"/>
+<path fill="none" stroke="black" d="M429.03,-411.56C409.1,-363.41 351.77,-224.85 327.29,-165.7"/>
+<polygon fill="black" stroke="black" points="330.63,-164.6 323.57,-156.69 324.16,-167.27 330.63,-164.6"/>
 </g>
 <!-- main.c&#45;&gt;player.h -->
-<g id="edge20" class="edge">
+<g id="edge23" class="edge">
 <title>main.c&#45;&gt;player.h</title>
-<path fill="none" stroke="black" d="M250.45,-571.56C218.96,-509.36 109.27,-292.69 70.61,-216.34"/>
-<polygon fill="black" stroke="black" points="73.76,-214.82 66.12,-207.48 67.52,-217.98 73.76,-214.82"/>
-</g>
-<!-- sdl.h&#45;&gt;game.h -->
-<g id="edge30" class="edge">
-<title>sdl.h&#45;&gt;game.h</title>
-<path fill="none" stroke="black" d="M774.99,-206.7C778.25,-247.25 779.54,-344.78 723,-388.95 611.98,-475.69 518.23,-474.13 406,-388.95 353.26,-348.92 347.32,-263.5 348.22,-218.16"/>
-<polygon fill="black" stroke="black" points="351.71,-218.39 348.55,-208.28 344.71,-218.15 351.71,-218.39"/>
+<path fill="none" stroke="black" d="M456.28,-414.02C523.04,-366.69 736.15,-215.58 815.16,-159.56"/>
+<polygon fill="black" stroke="black" points="816.74,-162.73 822.87,-154.09 812.69,-157.02 816.74,-162.73"/>
 </g>
 <!-- sdl.h&#45;&gt;map.h -->
-<g id="edge1" class="edge">
+<g id="edge17" class="edge">
 <title>sdl.h&#45;&gt;map.h</title>
-<path fill="none" stroke="black" d="M769.28,-206.53C755.75,-268.59 709.1,-482.5 692.19,-560.07"/>
-<polygon fill="black" stroke="black" points="688.77,-559.31 690.06,-569.83 695.61,-560.81 688.77,-559.31"/>
+<path fill="none" stroke="black" d="M307.22,-154.91C285.9,-195.77 231.12,-305.45 204,-403.4 172.03,-518.88 160.25,-662.04 156.52,-721.95"/>
+<polygon fill="black" stroke="black" points="153.04,-721.41 155.94,-731.6 160.03,-721.83 153.04,-721.41"/>
 </g>
 <!-- gif.h -->
 <g id="node9" class="node">
 <title>gif.h</title>
-<ellipse fill="none" stroke="black" cx="848" cy="-188.45" rx="28.32" ry="18"/>
-<text text-anchor="middle" x="848" y="-183.4" font-family="Times,serif" font-size="14.00">gif.h</text>
+<ellipse fill="none" stroke="black" cx="241" cy="-137.4" rx="28.32" ry="18"/>
+<text text-anchor="middle" x="241" y="-132.35" font-family="Times,serif" font-size="14.00">gif.h</text>
 </g>
 <!-- player.h&#45;&gt;gif.h -->
-<g id="edge9" class="edge">
+<g id="edge13" class="edge">
 <title>player.h&#45;&gt;gif.h</title>
-<path fill="none" stroke="black" d="M56.18,-206.83C55.5,-247.66 60.35,-345.7 119,-388.95 363.3,-569.13 564.56,-578.08 802,-388.95 853.18,-348.19 854.66,-263.09 851.37,-217.98"/>
-<polygon fill="black" stroke="black" points="854.87,-217.81 850.51,-208.16 847.9,-218.42 854.87,-217.81"/>
+<path fill="none" stroke="black" d="M839.59,-155.54C828.96,-187.44 802.03,-252.75 753,-279.4 571.04,-378.33 454.5,-401.22 287,-279.4 251.72,-253.75 242.95,-200.44 241.08,-166.93"/>
+<polygon fill="black" stroke="black" points="244.58,-166.95 240.72,-157.09 237.58,-167.21 244.58,-166.95"/>
 </g>
 <!-- define.h -->
 <g id="node10" class="node">
 <title>define.h</title>
-<ellipse fill="none" stroke="black" cx="163" cy="-589.45" rx="41.12" ry="18"/>
-<text text-anchor="middle" x="163" y="-584.4" font-family="Times,serif" font-size="14.00">define.h</text>
+<ellipse fill="none" stroke="black" cx="709" cy="-429.4" rx="41.12" ry="18"/>
+<text text-anchor="middle" x="709" y="-424.35" font-family="Times,serif" font-size="14.00">define.h</text>
 </g>
 <!-- player.h&#45;&gt;define.h -->
-<g id="edge10" class="edge">
+<g id="edge26" class="edge">
 <title>player.h&#45;&gt;define.h</title>
-<path fill="none" stroke="black" d="M61.54,-206.53C78.06,-268.71 135.09,-483.38 155.59,-560.55"/>
-<polygon fill="black" stroke="black" points="152.11,-561.08 158.06,-569.85 158.87,-559.28 152.11,-561.08"/>
+<path fill="none" stroke="black" d="M837.08,-155.3C814.47,-203.51 749.49,-342.07 721.77,-401.17"/>
+<polygon fill="black" stroke="black" points="718.62,-399.65 717.54,-410.19 724.96,-402.62 718.62,-399.65"/>
 </g>
 <!-- xml.h -->
 <g id="node5" class="node">
 <title>xml.h</title>
-<ellipse fill="none" stroke="black" cx="439" cy="-188.45" rx="32.93" ry="18"/>
-<text text-anchor="middle" x="439" y="-183.4" font-family="Times,serif" font-size="14.00">xml.h</text>
+<ellipse fill="none" stroke="black" cx="667" cy="-137.4" rx="32.93" ry="18"/>
+<text text-anchor="middle" x="667" y="-132.35" font-family="Times,serif" font-size="14.00">xml.h</text>
 </g>
 <!-- xml.c -->
 <g id="node6" class="node">
 <title>xml.c</title>
-<ellipse fill="none" stroke="black" cx="440" cy="-589.45" rx="32.41" ry="18"/>
-<text text-anchor="middle" x="440" y="-584.4" font-family="Times,serif" font-size="14.00">xml.c</text>
+<ellipse fill="none" stroke="black" cx="617" cy="-429.4" rx="32.41" ry="18"/>
+<text text-anchor="middle" x="617" y="-424.35" font-family="Times,serif" font-size="14.00">xml.c</text>
 </g>
 <!-- xml.c&#45;&gt;xml.h -->
 <g id="edge28" class="edge">
 <title>xml.c&#45;&gt;xml.h</title>
-<path fill="none" stroke="black" d="M439.96,-571.05C439.8,-508.69 439.27,-295.99 439.07,-218.22"/>
-<polygon fill="black" stroke="black" points="442.57,-218.45 439.05,-208.46 435.57,-218.47 442.57,-218.45"/>
+<path fill="none" stroke="black" d="M619.98,-411.13C628.3,-362.88 651.85,-226.29 662.11,-166.74"/>
+<polygon fill="black" stroke="black" points="665.53,-167.53 663.78,-157.08 658.63,-166.34 665.53,-167.53"/>
 </g>
 <!-- map.h&#45;&gt;gif.h -->
-<g id="edge17" class="edge">
+<g id="edge2" class="edge">
 <title>map.h&#45;&gt;gif.h</title>
-<path fill="none" stroke="black" d="M692.86,-571.56C718.11,-509.36 806.08,-292.69 837.08,-216.34"/>
-<polygon fill="black" stroke="black" points="840.14,-218.11 840.66,-207.53 833.66,-215.48 840.14,-218.11"/>
+<path fill="none" stroke="black" d="M143.85,-734.04C111.29,-684.13 21.01,-529.62 60,-403.4 91.46,-301.56 176.99,-203.93 218.2,-161.1"/>
+<polygon fill="black" stroke="black" points="220.52,-163.73 225,-154.13 215.51,-158.85 220.52,-163.73"/>
+</g>
+<!-- map.h&#45;&gt;define.h -->
+<g id="edge14" class="edge">
+<title>map.h&#45;&gt;define.h</title>
+<path fill="none" stroke="black" d="M181.8,-739.68C259.85,-707.74 491.94,-607.67 658,-482.9 668.62,-474.92 679.08,-464.7 687.73,-455.4"/>
+<polygon fill="black" stroke="black" points="690.31,-457.77 694.41,-447.99 685.11,-453.08 690.31,-457.77"/>
 </g>
 <!-- texture.h -->
 <g id="node14" class="node">
 <title>texture.h</title>
-<ellipse fill="none" stroke="black" cx="654" cy="-188.45" rx="43.67" ry="18"/>
-<text text-anchor="middle" x="654" y="-183.4" font-family="Times,serif" font-size="14.00">texture.h</text>
+<ellipse fill="none" stroke="black" cx="113" cy="-429.4" rx="43.67" ry="18"/>
+<text text-anchor="middle" x="113" y="-424.35" font-family="Times,serif" font-size="14.00">texture.h</text>
 </g>
 <!-- map.h&#45;&gt;texture.h -->
-<g id="edge26" class="edge">
+<g id="edge21" class="edge">
 <title>map.h&#45;&gt;texture.h</title>
-<path fill="none" stroke="black" d="M684.6,-571.05C679.59,-508.55 662.47,-295.01 656.26,-217.69"/>
-<polygon fill="black" stroke="black" points="659.78,-217.69 655.49,-208.01 652.8,-218.25 659.78,-217.69"/>
+<path fill="none" stroke="black" d="M152.74,-733.2C145.89,-681 125.29,-524.04 116.76,-459.06"/>
+<polygon fill="black" stroke="black" points="120.24,-458.65 115.47,-449.19 113.3,-459.57 120.24,-458.65"/>
 </g>
 <!-- global_entity.h -->
 <g id="node16" class="node">
 <title>global_entity.h</title>
-<ellipse fill="none" stroke="black" cx="996" cy="-589.45" rx="66.19" ry="18"/>
-<text text-anchor="middle" x="996" y="-584.4" font-family="Times,serif" font-size="14.00">global_entity.h</text>
+<ellipse fill="none" stroke="black" cx="976" cy="-429.4" rx="66.19" ry="18"/>
+<text text-anchor="middle" x="976" y="-424.35" font-family="Times,serif" font-size="14.00">global_entity.h</text>
 </g>
 <!-- map.h&#45;&gt;global_entity.h -->
-<g id="edge14" class="edge">
+<g id="edge4" class="edge">
 <title>map.h&#45;&gt;global_entity.h</title>
-<path fill="none" stroke="black" d="M683.57,-607.6C678.6,-653.34 672.89,-773.53 741,-827.7 798.74,-873.63 846.39,-869.77 907,-827.7 975.99,-779.83 991.59,-671.59 995.06,-619.1"/>
-<polygon fill="black" stroke="black" points="998.54,-619.6 995.58,-609.42 991.55,-619.22 998.54,-619.6"/>
+<path fill="none" stroke="black" d="M185.48,-742.37C288.91,-714.49 634.76,-616.29 898,-482.9 914.44,-474.57 931.56,-463.37 945.55,-453.46"/>
+<polygon fill="black" stroke="black" points="947.42,-456.43 953.47,-447.74 943.32,-450.76 947.42,-456.43"/>
 </g>
 <!-- game.c -->
 <g id="node8" class="node">
 <title>game.c</title>
-<ellipse fill="none" stroke="black" cx="352" cy="-589.45" rx="38.04" ry="18"/>
-<text text-anchor="middle" x="352" y="-584.4" font-family="Times,serif" font-size="14.00">game.c</text>
+<ellipse fill="none" stroke="black" cx="529" cy="-429.4" rx="38.04" ry="18"/>
+<text text-anchor="middle" x="529" y="-424.35" font-family="Times,serif" font-size="14.00">game.c</text>
 </g>
 <!-- game.c&#45;&gt;game.h -->
-<g id="edge2" class="edge">
+<g id="edge24" class="edge">
 <title>game.c&#45;&gt;game.h</title>
-<path fill="none" stroke="black" d="M351.91,-571.05C351.6,-508.69 350.53,-295.99 350.14,-218.22"/>
-<polygon fill="black" stroke="black" points="353.65,-218.44 350.1,-208.46 346.65,-218.48 353.65,-218.44"/>
+<path fill="none" stroke="black" d="M523.58,-411.13C508.41,-362.78 465.4,-225.72 446.78,-166.37"/>
+<polygon fill="black" stroke="black" points="450.18,-165.52 443.84,-157.03 443.5,-167.62 450.18,-165.52"/>
 </g>
 <!-- player.c -->
 <g id="node11" class="node">
 <title>player.c</title>
-<ellipse fill="none" stroke="black" cx="57" cy="-589.45" rx="40.09" ry="18"/>
-<text text-anchor="middle" x="57" y="-584.4" font-family="Times,serif" font-size="14.00">player.c</text>
+<ellipse fill="none" stroke="black" cx="846" cy="-429.4" rx="40.09" ry="18"/>
+<text text-anchor="middle" x="846" y="-424.35" font-family="Times,serif" font-size="14.00">player.c</text>
 </g>
 <!-- player.c&#45;&gt;player.h -->
-<g id="edge8" class="edge">
+<g id="edge5" class="edge">
 <title>player.c&#45;&gt;player.h</title>
-<path fill="none" stroke="black" d="M57,-571.05C57,-508.69 57,-295.99 57,-218.22"/>
-<polygon fill="black" stroke="black" points="60.5,-218.46 57,-208.46 53.5,-218.46 60.5,-218.46"/>
+<path fill="none" stroke="black" d="M845.94,-411.13C845.77,-362.88 845.3,-226.29 845.1,-166.74"/>
+<polygon fill="black" stroke="black" points="848.6,-167.09 845.06,-157.1 841.6,-167.11 848.6,-167.09"/>
 </g>
 <!-- sdl.c -->
 <g id="node12" class="node">
 <title>sdl.c</title>
-<ellipse fill="none" stroke="black" cx="772" cy="-589.45" rx="28.32" ry="18"/>
-<text text-anchor="middle" x="772" y="-584.4" font-family="Times,serif" font-size="14.00">sdl.c</text>
+<ellipse fill="none" stroke="black" cx="315" cy="-429.4" rx="28.32" ry="18"/>
+<text text-anchor="middle" x="315" y="-424.35" font-family="Times,serif" font-size="14.00">sdl.c</text>
+</g>
+<!-- sdl.c&#45;&gt;game.h -->
+<g id="edge29" class="edge">
+<title>sdl.c&#45;&gt;game.h</title>
+<path fill="none" stroke="black" d="M322.14,-411.56C342.57,-363.41 401.34,-224.85 426.42,-165.7"/>
+<polygon fill="black" stroke="black" points="429.56,-167.26 430.24,-156.69 423.12,-164.53 429.56,-167.26"/>
 </g>
 <!-- sdl.c&#45;&gt;sdl.h -->
-<g id="edge23" class="edge">
+<g id="edge27" class="edge">
 <title>sdl.c&#45;&gt;sdl.h</title>
-<path fill="none" stroke="black" d="M772.04,-571.05C772.2,-508.69 772.73,-295.99 772.93,-218.22"/>
-<polygon fill="black" stroke="black" points="776.43,-218.47 772.95,-208.46 769.43,-218.45 776.43,-218.47"/>
+<path fill="none" stroke="black" d="M315.06,-411.13C315.23,-362.88 315.7,-226.29 315.9,-166.74"/>
+<polygon fill="black" stroke="black" points="319.4,-167.11 315.94,-157.1 312.4,-167.09 319.4,-167.11"/>
 </g>
 <!-- sdl.c&#45;&gt;player.h -->
-<g id="edge15" class="edge">
+<g id="edge11" class="edge">
 <title>sdl.c&#45;&gt;player.h</title>
-<path fill="none" stroke="black" d="M751.37,-576.94C651.49,-521.2 217.74,-279.15 91.55,-208.74"/>
-<polygon fill="black" stroke="black" points="93.41,-205.77 82.98,-203.95 90,-211.88 93.41,-205.77"/>
-</g>
-<!-- sdl.c&#45;&gt;map.h -->
-<g id="edge4" class="edge">
-<title>sdl.c&#45;&gt;map.h</title>
-<path fill="none" stroke="black" d="M743.28,-589.45C739.55,-589.45 735.83,-589.45 732.11,-589.45"/>
-<polygon fill="black" stroke="black" points="732.45,-585.95 722.45,-589.45 732.45,-592.95 732.45,-585.95"/>
+<path fill="none" stroke="black" d="M336.1,-416.86C417.18,-372.5 709.13,-212.75 810.24,-157.42"/>
+<polygon fill="black" stroke="black" points="811.82,-160.55 818.91,-152.68 808.46,-154.41 811.82,-160.55"/>
 </g>
 <!-- gif.c -->
 <g id="node13" class="node">
 <title>gif.c</title>
-<ellipse fill="none" stroke="black" cx="846" cy="-589.45" rx="27.81" ry="18"/>
-<text text-anchor="middle" x="846" y="-584.4" font-family="Times,serif" font-size="14.00">gif.c</text>
+<ellipse fill="none" stroke="black" cx="241" cy="-429.4" rx="27.81" ry="18"/>
+<text text-anchor="middle" x="241" y="-424.35" font-family="Times,serif" font-size="14.00">gif.c</text>
 </g>
 <!-- gif.c&#45;&gt;sdl.h -->
-<g id="edge19" class="edge">
+<g id="edge3" class="edge">
 <title>gif.c&#45;&gt;sdl.h</title>
-<path fill="none" stroke="black" d="M842.86,-571.31C831.49,-509.15 792.35,-295.23 778.18,-217.75"/>
-<polygon fill="black" stroke="black" points="781.64,-217.23 776.4,-208.02 774.75,-218.49 781.64,-217.23"/>
+<path fill="none" stroke="black" d="M245.36,-411.56C257.75,-363.62 293.33,-226.08 308.74,-166.49"/>
+<polygon fill="black" stroke="black" points="312.04,-167.68 311.16,-157.13 305.27,-165.93 312.04,-167.68"/>
 </g>
 <!-- gif.c&#45;&gt;gif.h -->
-<g id="edge7" class="edge">
+<g id="edge25" class="edge">
 <title>gif.c&#45;&gt;gif.h</title>
-<path fill="none" stroke="black" d="M846.09,-571.05C846.4,-508.69 847.47,-295.99 847.86,-218.22"/>
-<polygon fill="black" stroke="black" points="851.35,-218.48 847.9,-208.46 844.35,-218.44 851.35,-218.48"/>
+<path fill="none" stroke="black" d="M241,-411.13C241,-362.88 241,-226.29 241,-166.74"/>
+<polygon fill="black" stroke="black" points="244.5,-167.1 241,-157.1 237.5,-167.1 244.5,-167.1"/>
 </g>
 <!-- texture.h&#45;&gt;gif.h -->
-<g id="edge25" class="edge">
+<g id="edge6" class="edge">
 <title>texture.h&#45;&gt;gif.h</title>
-<path fill="none" stroke="black" d="M655.53,-206.75C660.05,-247.87 677.39,-347.22 741,-388.95 763.67,-403.83 780.79,-405.85 802,-388.95 853.18,-348.19 854.66,-263.09 851.37,-217.98"/>
-<polygon fill="black" stroke="black" points="854.87,-217.81 850.51,-208.16 847.9,-218.42 854.87,-217.81"/>
+<path fill="none" stroke="black" d="M120.44,-411.56C141.74,-363.29 203.13,-224.19 229.14,-165.28"/>
+<polygon fill="black" stroke="black" points="232.26,-166.88 233.09,-156.32 225.85,-164.05 232.26,-166.88"/>
 </g>
 <!-- map.c -->
 <g id="node15" class="node">
 <title>map.c</title>
-<ellipse fill="none" stroke="black" cx="633" cy="-1030.45" rx="33.95" ry="18"/>
-<text text-anchor="middle" x="633" y="-1025.4" font-family="Times,serif" font-size="14.00">map.c</text>
-</g>
-<!-- map.c&#45;&gt;sdl.h -->
-<g id="edge11" class="edge">
-<title>map.c&#45;&gt;sdl.h</title>
-<path fill="none" stroke="black" d="M648.04,-1013.87C694.4,-964.61 834.92,-805.82 883,-642.95 930.46,-482.21 829.37,-285.1 788.84,-215.38"/>
-<polygon fill="black" stroke="black" points="791.97,-213.8 783.87,-206.98 785.94,-217.37 791.97,-213.8"/>
+<ellipse fill="none" stroke="black" cx="155" cy="-1073.4" rx="33.95" ry="18"/>
+<text text-anchor="middle" x="155" y="-1068.35" font-family="Times,serif" font-size="14.00">map.c</text>
 </g>
 <!-- map.c&#45;&gt;xml.h -->
-<g id="edge16" class="edge">
+<g id="edge20" class="edge">
 <title>map.c&#45;&gt;xml.h</title>
-<path fill="none" stroke="black" d="M627.19,-1012.3C609.1,-958.45 553,-787.68 519,-642.95 481.67,-484.03 453,-290.12 442.92,-218.13"/>
-<polygon fill="black" stroke="black" points="446.41,-217.82 441.56,-208.4 439.47,-218.78 446.41,-217.82"/>
+<path fill="none" stroke="black" d="M177.77,-1059.65C272.05,-1005.34 632.84,-782.33 759,-482.9 807.17,-368.58 723.54,-222.13 684.95,-163.91"/>
+<polygon fill="black" stroke="black" points="688.08,-162.3 679.58,-155.97 682.28,-166.22 688.08,-162.3"/>
 </g>
 <!-- map.c&#45;&gt;map.h -->
-<g id="edge27" class="edge">
+<g id="edge22" class="edge">
 <title>map.c&#45;&gt;map.h</title>
-<path fill="none" stroke="black" d="M635.08,-1012.24C643.15,-945.38 672.48,-702.42 682.57,-618.89"/>
-<polygon fill="black" stroke="black" points="686.03,-619.39 683.76,-609.05 679.08,-618.55 686.03,-619.39"/>
+<path fill="none" stroke="black" d="M155,-1055.2C155,-1003 155,-846.04 155,-781.06"/>
+<polygon fill="black" stroke="black" points="158.5,-781.21 155,-771.21 151.5,-781.21 158.5,-781.21"/>
 </g>
 <!-- map.c&#45;&gt;define.h -->
-<g id="edge24" class="edge">
+<g id="edge15" class="edge">
 <title>map.c&#45;&gt;define.h</title>
-<path fill="none" stroke="black" d="M616.22,-1014.73C558.81,-964.2 365.29,-792.65 213,-642.95 203.75,-633.86 193.84,-623.58 185.31,-614.54"/>
-<polygon fill="black" stroke="black" points="188.04,-612.34 178.65,-607.44 182.94,-617.13 188.04,-612.34"/>
-</g>
-<!-- map.c&#45;&gt;texture.h -->
-<g id="edge29" class="edge">
-<title>map.c&#45;&gt;texture.h</title>
-<path fill="none" stroke="black" d="M633.34,-1011.98C634.52,-951.18 638.65,-743.19 643,-571.45 646.34,-439.32 651.15,-281.5 653.11,-217.99"/>
-<polygon fill="black" stroke="black" points="656.61,-218.2 653.42,-208.1 649.61,-217.99 656.61,-218.2"/>
+<path fill="none" stroke="black" d="M168.69,-1056.53C242.93,-970.51 597.07,-560.12 687.79,-454.98"/>
+<polygon fill="black" stroke="black" points="690.16,-457.59 694.05,-447.73 684.87,-453.02 690.16,-457.59"/>
 </g>
 <!-- global_entity.h&#45;&gt;gif.h -->
-<g id="edge13" class="edge">
+<g id="edge7" class="edge">
 <title>global_entity.h&#45;&gt;gif.h</title>
-<path fill="none" stroke="black" d="M989.55,-571.05C966.31,-508.42 886.83,-294.14 858.3,-217.22"/>
-<polygon fill="black" stroke="black" points="861.61,-216.08 854.85,-207.92 855.04,-218.51 861.61,-216.08"/>
+<path fill="none" stroke="black" d="M937.86,-414.37C832.2,-375.31 527.1,-261.24 278,-155.4 276.5,-154.77 274.96,-154.1 273.41,-153.43"/>
+<polygon fill="black" stroke="black" points="275.15,-150.37 264.59,-149.48 272.29,-156.76 275.15,-150.37"/>
 </g>
 <!-- global_entity.h&#45;&gt;define.h -->
-<g id="edge6" class="edge">
+<g id="edge1" class="edge">
 <title>global_entity.h&#45;&gt;define.h</title>
-<path fill="none" stroke="black" d="M995.66,-607.91C993.7,-654.36 981.37,-776.1 907,-827.7 656.88,-1001.27 461.76,-1015.33 222,-827.7 158.31,-777.86 156.63,-670.98 160.02,-619.02"/>
-<polygon fill="black" stroke="black" points="163.5,-619.39 160.78,-609.15 156.52,-618.85 163.5,-619.39"/>
+<path fill="none" stroke="black" d="M973.45,-447.77C967.09,-485.68 946.65,-572.1 889,-608.15 855.84,-628.89 834.39,-628.52 801,-608.15 747.46,-575.5 723.75,-500.62 714.38,-458.88"/>
+<polygon fill="black" stroke="black" points="717.84,-458.35 712.37,-449.29 710.99,-459.79 717.84,-458.35"/>
 </g>
 <!-- entity.h -->
 <g id="node19" class="node">
 <title>entity.h</title>
-<ellipse fill="none" stroke="black" cx="1019" cy="-188.45" rx="38.56" ry="18"/>
-<text text-anchor="middle" x="1019" y="-183.4" font-family="Times,serif" font-size="14.00">entity.h</text>
+<ellipse fill="none" stroke="black" cx="976" cy="-137.4" rx="38.56" ry="18"/>
+<text text-anchor="middle" x="976" y="-132.35" font-family="Times,serif" font-size="14.00">entity.h</text>
 </g>
 <!-- global_entity.h&#45;&gt;entity.h -->
-<g id="edge31" class="edge">
+<g id="edge10" class="edge">
 <title>global_entity.h&#45;&gt;entity.h</title>
-<path fill="none" stroke="black" d="M997,-571.05C1000.6,-508.69 1012.86,-295.99 1017.34,-218.22"/>
-<polygon fill="black" stroke="black" points="1020.82,-218.64 1017.9,-208.46 1013.83,-218.24 1020.82,-218.64"/>
+<path fill="none" stroke="black" d="M976,-411.13C976,-362.88 976,-226.29 976,-166.74"/>
+<polygon fill="black" stroke="black" points="979.5,-167.1 976,-157.1 972.5,-167.1 979.5,-167.1"/>
 </g>
 <!-- texture.c -->
 <g id="node17" class="node">
 <title>texture.c</title>
-<ellipse fill="none" stroke="black" cx="571" cy="-589.45" rx="43.16" ry="18"/>
-<text text-anchor="middle" x="571" y="-584.4" font-family="Times,serif" font-size="14.00">texture.c</text>
+<ellipse fill="none" stroke="black" cx="59" cy="-751.4" rx="43.16" ry="18"/>
+<text text-anchor="middle" x="59" y="-746.35" font-family="Times,serif" font-size="14.00">texture.c</text>
 </g>
 <!-- texture.c&#45;&gt;texture.h -->
-<g id="edge5" class="edge">
+<g id="edge8" class="edge">
 <title>texture.c&#45;&gt;texture.h</title>
-<path fill="none" stroke="black" d="M574.62,-571.05C587.62,-508.55 632.04,-295.01 648.13,-217.69"/>
-<polygon fill="black" stroke="black" points="651.54,-218.48 650.15,-207.98 644.68,-217.06 651.54,-218.48"/>
+<path fill="none" stroke="black" d="M61.9,-733.2C70.73,-680.89 97.31,-523.39 108.23,-458.66"/>
+<polygon fill="black" stroke="black" points="111.62,-459.63 109.83,-449.19 104.72,-458.46 111.62,-459.63"/>
 </g>
 <!-- entity.c -->
 <g id="node18" class="node">
 <title>entity.c</title>
-<ellipse fill="none" stroke="black" cx="1020" cy="-1030.45" rx="38.04" ry="18"/>
-<text text-anchor="middle" x="1020" y="-1025.4" font-family="Times,serif" font-size="14.00">entity.c</text>
+<ellipse fill="none" stroke="black" cx="976" cy="-751.4" rx="38.04" ry="18"/>
+<text text-anchor="middle" x="976" y="-746.35" font-family="Times,serif" font-size="14.00">entity.c</text>
 </g>
 <!-- entity.c&#45;&gt;global_entity.h -->
-<g id="edge18" class="edge">
+<g id="edge16" class="edge">
 <title>entity.c&#45;&gt;global_entity.h</title>
-<path fill="none" stroke="black" d="M1019.04,-1011.97C1015.37,-944.71 1002.11,-702.19 997.55,-618.83"/>
-<polygon fill="black" stroke="black" points="1001.06,-618.81 997.01,-609.02 994.07,-619.2 1001.06,-618.81"/>
-</g>
-<!-- entity.c&#45;&gt;entity.h -->
-<g id="edge22" class="edge">
-<title>entity.c&#45;&gt;entity.h</title>
-<path fill="none" stroke="black" d="M1024.1,-1012.45C1038.14,-952.35 1082.71,-744.27 1071,-571.45 1061.99,-438.46 1035.53,-281.19 1024.22,-217.91"/>
-<polygon fill="black" stroke="black" points="1027.72,-217.59 1022.5,-208.37 1020.83,-218.83 1027.72,-217.59"/>
+<path fill="none" stroke="black" d="M976,-733.2C976,-681 976,-524.04 976,-459.06"/>
+<polygon fill="black" stroke="black" points="979.5,-459.21 976,-449.21 972.5,-459.21 979.5,-459.21"/>
 </g>
 </g>
 </svg>

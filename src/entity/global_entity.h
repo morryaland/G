@@ -9,7 +9,7 @@
  *
  * */
 typedef struct _global_entity {
-  char name[256];
+  char name[NAME_MAX];
   unsigned int entity_c;
   unsigned char state_c;
   ENTITY **entities;

@@ -1,9 +1,9 @@
 #ifndef __MAP_H__
 #define __MAP_H__
 
-#include <stdio.h>
-#include "../sdl/gif.h"
 #include "texture.h"
+#include "../define.h"
+#include "../sdl/gif.h"
 #include "../entity/global_entity.h"
 
 /* Game map

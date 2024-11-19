@@ -1,6 +1,6 @@
-#include "../map/map.h"
-#include "../player/player.h"
 #include "sdl.h"
+#include "../player/player.h"
+#include "../game.h"
 
 SDL_Window *game_window;
 SDL_Renderer *game_renderer;

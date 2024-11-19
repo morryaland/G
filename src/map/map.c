@@ -1,12 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <assert.h>
-#include "../sdl/sdl.h"
+#include "map.h"
 #include "../define.h"
 #include "../xml.h"
-#include "texture.h"
-#include "map.h"
 
 static MAP *map_init(const char *name)
 {

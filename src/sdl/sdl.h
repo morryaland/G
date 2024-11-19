@@ -3,7 +3,6 @@
 
 #include <SDL2/SDL.h>
 #include "../map/map.h"
-#include "../game.h"
 
 extern SDL_Window *game_window;
 extern SDL_Renderer *game_renderer;

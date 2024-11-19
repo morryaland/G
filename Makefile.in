@@ -21,7 +21,7 @@ $(BIN_PATH)/$(TARGET): $(OBJ)
 	$(CC) -o $@ $(LDFLAGS) $(CFLAGS) $^
 
 graph:
-	./cinclude2dot --groups --quotetypes quote --src src | dot -Tsvg >> graph.svg
+	./cinclude2dot --groups --quotetypes quote --src src | dot -Tsvg > graph.svg
 
 test: $(OBJ_TEST)
 	$(MAKE) -C ./tests/ LDFLAGS="$(LDFLAGS)" CFLAGS="$(CFLAGS)" OBJ="$(OBJ_TEST)" run
