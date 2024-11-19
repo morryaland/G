@@ -6,7 +6,8 @@ void player_init(char *default_map, float x, float y, float w, float h)
 {
   player = malloc(sizeof(PLAYER));
   player_set_map(default_map);
-  player_move(x, y);
+  player->x = x;
+  player->y = y;
   player->w = w;
   player->h = h;
   player->state = 0;

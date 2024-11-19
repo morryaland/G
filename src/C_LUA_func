@@ -1,0 +1,8 @@
+void cam_move(float x, float y);
+
+void player_set_map(char *map_name);
+void player_set_state(unsigned char state);
+void player_move(float x, float y);
+
+void entity_set_state(ENTITY *e, unsigned char state);
+void entity_move(ENTITY *e, float x, float y);
