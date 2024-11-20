@@ -1,0 +1,25 @@
+\doxysection{game.\+h}
+\hypertarget{game_8h_source}{}\label{game_8h_source}\index{src/game.h@{src/game.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_\_GAME\_H\_\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_\_GAME\_H\_\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}map/map.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}player/player.h"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\_camera\ \{}
+\DoxyCodeLine{00008\ \ \ \textcolor{keywordtype}{float}\ x;}
+\DoxyCodeLine{00009\ \ \ \textcolor{keywordtype}{float}\ y;}
+\DoxyCodeLine{00010\ \ \ \textcolor{keywordtype}{float}\ f;}
+\DoxyCodeLine{00011\ \}\ \mbox{\hyperlink{structCAMERA}{CAMERA}};}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structCAMERA}{CAMERA}}\ game\_camera;}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keywordtype}{void}\ cam\_move(\textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y);}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \mbox{\hyperlink{structMAP}{MAP}}\ *player\_map();}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

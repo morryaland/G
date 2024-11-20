@@ -13,15 +13,15 @@ OBJ_TEST = $(filter-out $(OBJ_PATH)/main.o, $(OBJ))
 CFLAGS+= @CFLAGS@
 LDFLAGS+= -L/usr/local/lib -lm -DLOAD_GIF @LDFLAGS@
 
-.PHONY: all test clean graph
+.PHONY: all test clean dox
 
 all: $(BIN_PATH)/$(TARGET)
 
 $(BIN_PATH)/$(TARGET): $(OBJ)
 	$(CC) -o $@ $(LDFLAGS) $(CFLAGS) $^
 
-graph:
-	./cinclude2dot --groups --quotetypes quote --src src | dot -Tsvg > graph.svg
+dox:
+	doxygen doxconf
 
 test: $(OBJ_TEST)
 	$(MAKE) -C ./tests/ LDFLAGS="$(LDFLAGS)" CFLAGS="$(CFLAGS)" OBJ="$(OBJ_TEST)" run
