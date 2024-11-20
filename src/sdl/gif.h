@@ -3,7 +3,7 @@
 
 #include <SDL2/SDL_image.h>
 
-typedef struct _gif_animation {
+typedef struct {
   SDL_Texture **t;
   int *d;
   int h;
