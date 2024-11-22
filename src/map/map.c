@@ -15,6 +15,28 @@ static MAP *map_init(const char *name)
   return m;
 }
 
+static struct xml_node *node_name_content(char *name, char *content, struct xml_node *n, int i)
+{
+  struct xml_node *chnode = xml_node_child(n, i);
+  struct xml_string *chnode_name = xml_node_name(chnode);
+  struct xml_string *chnode_content = xml_node_content(chnode);
+  if (name)
+    xml_string_copy(chnode_name, (uint8_t*)name, xml_string_length(chnode_name));
+  if (content)
+    xml_string_copy(chnode_content, (uint8_t*)content, xml_string_length(chnode_content));
+  return chnode;
+}
+
+void attribute_name_content(char *name, char *content, struct xml_node *n, int i)
+{
+  struct xml_string *node_name = xml_node_attribute_name(n, i);
+  struct xml_string *node_content = xml_node_attribute_content(n, i);
+  if (name)
+    xml_string_copy(node_name, (uint8_t*)name, xml_string_length(node_name));
+  if (content)
+    xml_string_copy(node_content, (uint8_t*)content, xml_string_length(node_content));
+}
+
 MAP *map_load(const char *map_name)
 {
   MAP *m = map_init(map_name);
@@ -40,14 +62,9 @@ MAP *map_load(const char *map_name)
   int node_c = xml_node_children(root);
 
   for (int i = 0; i < node_c; i++) {
-    struct xml_node *rchild = xml_node_child(root, i);
-
-    struct xml_string *rchild_name = xml_node_name(rchild);
-    struct xml_string *rchild_content = xml_node_content(rchild);
     char name[NAME_MAX] = "";
     char content[PATH_MAX] = "";
-    xml_string_copy(rchild_name, name, xml_string_length(rchild_name));
-    xml_string_copy(rchild_content, content, xml_string_length(rchild_content));
+    struct xml_node *rchild = node_name_content(name, content, root, i);
 
     if (!strcmp(name, "Width")) {
       m->w = strtol(content, NULL, 10);
@@ -71,23 +88,21 @@ MAP *map_load(const char *map_name)
       struct { int x, y, w, h; } *rs = calloc(ch_c, sizeof(struct { int x, y, w, h; }));
       for (int i = 0; i < ch_c; i++) {
         struct xml_node *r = xml_node_child(rchild, i);
-        struct xml_string *cx = xml_node_attribute_content(r, 0);
-        struct xml_string *cy = xml_node_attribute_content(r, 1);
-        struct xml_string *cw = xml_node_attribute_content(r, 2);
-        struct xml_string *ch = xml_node_attribute_content(r, 3);
-        char x[10] = "";
-        char y[10] = "";
-        char w[10] = "";
-        char h[10] = "";
-        xml_string_copy(cx, x, xml_string_length(cx));
-        xml_string_copy(cy, y, xml_string_length(cy));
-        xml_string_copy(cw, w, xml_string_length(cw));
-        xml_string_copy(ch, h, xml_string_length(ch));
-
-        rs[i].x = strtol(x, NULL, 10);
-        rs[i].y = strtol(y, NULL, 10);
-        rs[i].w = strtol(w, NULL, 10);
-        rs[i].h = strtol(h, NULL, 10);
+        int attr_c = xml_node_attributes(r);
+        for (int j = 0; j < attr_c; j++) {
+          char att_val[10] = "";
+          char att_name[NAME_MAX] = "";
+          attribute_name_content(att_name, att_val, r, j);
+         
+          if (!strcmp(att_name, "x"))
+            rs[i].x = strtol(att_val, NULL, 10);
+          else if (!strcmp(att_name, "y"))
+            rs[i].y = strtol(att_val, NULL, 10);
+          else if (!strcmp(att_name, "w"))
+            rs[i].w = strtol(att_val, NULL, 10);
+          else if (!strcmp(att_name, "h"))
+            rs[i].h = strtol(att_val, NULL, 10);
+        }
       }
       m->texture_map = realloc(m->texture_map, sizeof(TEXTURE*) * (m->texture_c + 1));
       m->texture_map[m->texture_c] = texture_load(gif_load(tpath), ch_c, rs);
@@ -104,30 +119,20 @@ MAP *map_load(const char *map_name)
       ENTITY **entity_list = NULL;
       GIF_ANIMATION **sprite_list = NULL;
       for (int i = 0; i < ch_c; i++) {
-        struct xml_node *gechild = xml_node_child(rchild, i);
-
-        struct xml_string *__gechild_name = xml_node_name(gechild);
-        struct xml_string *__gechild_content = xml_node_content(gechild);
         char gechild_name[64] = "";
         char gechild_content[256] = "";
-        xml_string_copy(__gechild_name, gechild_name, xml_string_length(__gechild_name));
-        xml_string_copy(__gechild_content, gechild_content, xml_string_length(__gechild_content));
+        struct xml_node *gechild = node_name_content(gechild_name, gechild_content, rchild, i);
 
         if (!strcmp(gechild_name, "Entity")) {
           entity_list = realloc(entity_list, sizeof(ENTITY*) * (e_c + 1));
-
-          struct xml_string *cx = xml_node_attribute_content(gechild, 0);
-          struct xml_string *cy = xml_node_attribute_content(gechild, 1);
-          struct xml_string *cw = xml_node_attribute_content(gechild, 2);
-          struct xml_string *ch = xml_node_attribute_content(gechild, 3);
           char x[64] = "";
           char y[64] = "";
           char w[64] = "";
           char h[64] = "";
-          xml_string_copy(cx, x, xml_string_length(cx));
-          xml_string_copy(cy, y, xml_string_length(cy));
-          xml_string_copy(cw, w, xml_string_length(cw));
-          xml_string_copy(ch, h, xml_string_length(ch));
+          attribute_name_content(NULL, x, gechild, 0);
+          attribute_name_content(NULL, y, gechild, 1);
+          attribute_name_content(NULL, w, gechild, 2);
+          attribute_name_content(NULL, h, gechild, 3);
 
           char luapath[PATH_MAX] = "";        
           snprintf(luapath, sizeof(luapath), "%s%s%s%s%s%s", ASSETS_DIR, ENTITY_DIR, entity_name, "/", gechild_content, LUA_FILE_FORMAT);
