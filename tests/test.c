@@ -34,12 +34,12 @@ void Test_map_load(CuTest *tc)
 
 void Test_player(CuTest *tc)
 {
-  player_init("void/void", 1.1, 2.2, 2, 3);
+  player_init("void/void", 1.1, 2.2, 2, 3, 0xFF);
   CuAssertStrEquals(tc, player->region_map_name, "void/void");
-  CuAssertIntEquals(tc, player->state_c, PLAYER_SPRITE);
-  CuAssertPtrNotNull(tc, player->sprites);
-  CuAssertPtrNotNull(tc, player->sprites[0]);
-  CuAssertPtrNotNull(tc, player->sprites[1]);
+  CuAssertIntEquals(tc, player->entity->state_c, PLAYER_SPRITE);
+  CuAssertPtrNotNull(tc, player->entity->sprites);
+  CuAssertPtrNotNull(tc, player->entity->sprites[0]);
+  CuAssertPtrNotNull(tc, player->entity->sprites[1]);
   player_destroy();
 }
 
@@ -67,7 +67,7 @@ void Test_global_entity(CuTest *tc)
 
 void Valgrind_player()
 {
-  player_init("void/void", 1.1, 2.2, 3, 4);
+  player_init("void/void", 1.1, 2.2, 3, 4, 0xFF);
   player_destroy();
 }
 

@@ -7,7 +7,6 @@
 #define ASSETS_DIR "./assets/"
 #define LOCATION_DIR "locations/"
 #define ENTITY_DIR "entities/"
-#define PLAYER_DIR "player/"
 
 #define PIX_PER_UNIT 128
 

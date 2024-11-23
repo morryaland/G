@@ -2,28 +2,20 @@
 
 PLAYER *player;
 
-void player_init(char *default_map, float x, float y, float w, float h)
+void player_init(char *default_map, float x, float y, float w, float h, int flags)
 {
   player = malloc(sizeof(PLAYER));
   player_set_map(default_map);
-  player->x = x;
-  player->y = y;
-  player->w = w;
-  player->h = h;
-  player->state = 0;
-  player->flags = 0xFF;
-  player->state_c = PLAYER_SPRITE;
-  player->sprites = malloc(sizeof(IMG_Animation*) * PLAYER_SPRITE);
+  player->flags = flags;
+  ENTITY **e = malloc(sizeof(ENTITY*));
+  e[0] = entity_init(0, x, y, w, h, flags);
+  GIF_ANIMATION **s = malloc(sizeof(GIF_ANIMATION*) * PLAYER_SPRITE);
   char ipath[PATH_MAX];
   for (int i = 0; i < PLAYER_SPRITE; i++) {
-    snprintf(ipath, sizeof(ipath), "%s%sp%d%s", ASSETS_DIR, PLAYER_DIR, i + 1, IMG_FILE_FORMAT);
-    player->sprites[i] = gif_load(ipath);
+    snprintf(ipath, sizeof(ipath), "%s%s%s%sp%d%s", ASSETS_DIR, ENTITY_DIR, "player", "/", i + 1, IMG_FILE_FORMAT);
+    s[i] = gif_load(ipath);
   }
-}
-
-void player_set_state(unsigned char state)
-{
-  player->state = state;
+  player->entity = global_entity_init("player", e, 1, s, PLAYER_SPRITE);
 }
 
 void player_set_map(char *map_name)
@@ -31,18 +23,9 @@ void player_set_map(char *map_name)
   strcpy(player->region_map_name, map_name);
 }
 
-void player_move(float x, float y)
-{
-  player->x = x;
-  player->y = y;
-}
-
 void player_destroy()
 {
-  for (int i = 0; i < PLAYER_SPRITE; i++) {
-    gif_unload(&player->sprites[i]);
-  }
-  free(player->sprites);
+  global_entity_destroy(&player->entity);
   free(player);
   player = NULL;
 }

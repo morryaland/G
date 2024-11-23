@@ -62,6 +62,6 @@ void render_entity(MAP *(*m)())
 void render_player()
 {
   SDL_Rect sp;
-  screen_proection(&sp, player->x, player->y, player->w, player->h);
-  SDL_RenderCopy(game_renderer, gif_animation(player->sprites[player->state]), NULL, &sp);
+  screen_proection(&sp, ___player->x, ___player->y, ___player->w, ___player->h);
+  SDL_RenderCopy(game_renderer, gif_animation(__player->sprites[___player->state]), NULL, &sp);
 }
