@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include "global_entity.h"
+#include "../sdl/sdl.h"
 
 GLOBAL_ENTITY *global_entity_init(char *name, ENTITY **e_list, unsigned short e_c, GIF_ANIMATION **s, unsigned char s_c)
 {
