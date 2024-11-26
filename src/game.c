@@ -3,10 +3,17 @@
 CAMERA game_camera;
 static MAP *load_map;
 
+
+
+void move(float *tx, float *ty, float x, float y)
+{
+  *tx = x;
+  *ty = y;
+}
+
 void cam_move(float x, float y)
 {
-  game_camera.x = x;
-  game_camera.y = y;
+  move(&game_camera.x, &game_camera.y, x, y);
 }
 
 MAP *player_map()

@@ -22,17 +22,14 @@ GIF_ANIMATION *gif_load(const char *path)
 
 SDL_Texture *gif_animation(GIF_ANIMATION *a)
 {
-  unsigned long tn, fr;
-  tn = SDL_GetPerformanceCounter();
-  fr = SDL_GetPerformanceFrequency();
   if (!a->time_start_frame) {
-    a->time_start_frame = tn;
+    a->time_start_frame = game_timer;
   }
   if (a->len == 1)
     return a->t[0];
-  unsigned long delta_us = (double)(tn - a->time_start_frame) / fr * 1000;
+  unsigned long delta_us = (double)(game_timer - a->time_start_frame) / game_freque * 1000;
   if (delta_us > a->d[a->count]) {
-    a->time_start_frame = tn;
+    a->time_start_frame = game_timer;
     a->count++;
     if (a->count > a->len - 1)
       a->count = 0;

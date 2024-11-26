@@ -5,6 +5,8 @@
 SDL_Window *game_window;
 SDL_Renderer *game_renderer;
 SDL_Event game_window_event;
+uint64_t game_timer;
+uint64_t game_freque;
 
 void screen_proection(SDL_Rect *sp, float x, float y, float w, float h)
 {

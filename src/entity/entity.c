@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include "global_entity.h"
 #include "../sdl/sdl.h"
+#include "../game.h"
 
 GLOBAL_ENTITY *global_entity_init(char *name, ENTITY **e_list, unsigned short e_c, GIF_ANIMATION **s, unsigned char s_c)
 {
@@ -33,6 +34,7 @@ void entity_set_state(ENTITY *e, unsigned char state)
 
 void entity_move(ENTITY *e, float x, float y)
 {
+  move(&e->x, &e->y, x, y);
   e->x = x;
   e->y = y;
 }

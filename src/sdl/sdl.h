@@ -7,6 +7,8 @@
 extern SDL_Window *game_window;
 extern SDL_Renderer *game_renderer;
 extern SDL_Event game_window_event;
+extern uint64_t game_timer;
+extern uint64_t game_freque;
 
 void sdl_init();
 

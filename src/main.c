@@ -8,6 +8,8 @@ int main()
   sdl_init();
   player_init("void/void", 0, 0, 1, 1, 0xFF);
   for (;;) {
+    game_timer = SDL_GetPerformanceCounter();
+    game_freque = SDL_GetPerformanceFrequency();
     event();
     SDL_RenderClear(game_renderer);
     cam_move(___player->x, ___player->y);

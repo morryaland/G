@@ -14,6 +14,8 @@ extern CAMERA game_camera;
 
 void cam_move(float x, float y);
 
+void move(float *tx, float *ty, float x, float y);
+
 MAP *player_map();
 
 #endif
