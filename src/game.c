@@ -1,19 +1,21 @@
 #include "game.h"
+#include "sdl/sdl.h"
+#include "move_stack.h"
 
 CAMERA game_camera;
+double game_fps;
 static MAP *load_map;
 
-
-
-void move(float *tx, float *ty, float x, float y)
+void fps_calc()
 {
-  *tx = x;
-  *ty = y;
+  static unsigned long time_last;
+  game_fps = 1 / ((double)(game_timer - time_last) / game_freque);
+  time_last = game_timer;
 }
 
 void cam_move(float x, float y)
 {
-  move(&game_camera.x, &game_camera.y, x, y);
+  move(&game_camera.mstackid, game_camera.speed, &game_camera.x, &game_camera.y, x, y);
 }
 
 MAP *player_map()

@@ -25,7 +25,6 @@ void sdl_init()
   SDL_DisplayMode dm;
   SDL_GetCurrentDisplayMode(0, &dm);
   SDL_CreateWindowAndRenderer(dm.w ?: DEFAULT_WINDOW_WIDTH, dm.h ?: DEFAULT_WINDOW_HEIGHT, SDL_WINDOW_FULLSCREEN, &game_window, &game_renderer);
-  game_camera.f = 2;
 }
 
 void render_map(MAP *(*m)())

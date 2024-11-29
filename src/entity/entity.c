@@ -22,7 +22,9 @@ ENTITY *entity_init(short local_id, float x, float y, float w, float h, int flag
   e->y = y;
   e->w = w;
   e->h = h;
+  e->speed = 3;
   e->state = 0;
+  e->mstackid = -1;
   e->flags = flags;
   return e;
 }
@@ -34,9 +36,7 @@ void entity_set_state(ENTITY *e, unsigned char state)
 
 void entity_move(ENTITY *e, float x, float y)
 {
-  move(&e->x, &e->y, x, y);
-  e->x = x;
-  e->y = y;
+  move(&e->mstackid, e->speed, &e->x, &e->y, x, y);
 }
 
 void entity_destroy(ENTITY **e)

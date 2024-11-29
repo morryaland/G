@@ -8,7 +8,9 @@ typedef struct _entity {
   unsigned int local_id;
   unsigned char state;
   float x, y, w, h;
+  float speed;
   int flags;
+  int mstackid;
 } ENTITY;
 
 /* создаёт новую сущность */
