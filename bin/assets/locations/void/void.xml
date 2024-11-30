@@ -1,12 +1,12 @@
 <Map>
   <Width>128</Width>
   <Height>128</Height>
-  <Background>void/void</Background>
-  <Texture name="void/void">
+  <Background>void/grass</Background>
+  <Texture name="void/ERROR">
     <Rectangle x="1" y="1" w="1" h="1"/>
     <Rectangle x="2" y="2" w="1" h="1"/>
   </Texture>
-  <Texture name="void/void">
+  <Texture name="void/ERROR">
     <Rectangle x="-2" y="-2" w="1" h="1"/>
     <Rectangle x="-1" y="-1" w="1" h="1"/>
   </Texture>

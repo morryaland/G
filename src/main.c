@@ -8,7 +8,7 @@ int main()
   sdl_init();
   player_init("void/void", 0, 0, 1, 1, 0xFF);
   game_camera.f = 2;
-  game_camera.speed = 2;
+  game_camera.speed = 3;
   game_camera.mstackid = -1;
   for (;;) {
     game_timer = SDL_GetPerformanceCounter();

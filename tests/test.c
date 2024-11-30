@@ -9,8 +9,8 @@ void Test_map_load(CuTest *tc)
 {
   MAP test_map = {
     .w = 128,
-    .h = 256,
-    .background = gif_load(ASSETS_DIR LOCATION_DIR MAP_NAME IMG_FILE_FORMAT),
+    .h = 128,
+    .background = gif_load(ASSETS_DIR LOCATION_DIR "void/grass" IMG_FILE_FORMAT),
     .location_map_name = MAP_NAME
   };
   MAP *load_map = map_load(MAP_NAME);
