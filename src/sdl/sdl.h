@@ -1,7 +1,7 @@
 #ifndef __SDL_H__
 #define __SDL_H__
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include "../map/map.h"
 
 extern SDL_Window *game_window;
@@ -14,7 +14,9 @@ void sdl_init();
 
 void render_map(MAP *(*m)());
 
-void render_entity(MAP *(*m)());
+void render_entity_map(MAP *(*m)());
+
+void render_entities(GLOBAL_ENTITY **e, int entity_c);
 
 void render_player();
 

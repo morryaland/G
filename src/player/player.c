@@ -20,7 +20,7 @@ void player_init(char *default_map, float x, float y, float w, float h, int flag
 
 void player_set_map(char *map_name)
 {
-  strcpy(player->region_map_name, map_name);
+  strcpy(player->location_map_name, map_name);
 }
 
 void player_destroy()

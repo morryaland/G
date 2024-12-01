@@ -75,7 +75,7 @@ void Valgrind_texture()
 {
   /* Texture test */
   struct { short x, y; } *c = calloc(2, sizeof(float) + sizeof(float));
-  TEXTURE *t = texture_load(gif_load(ASSETS_DIR LOCATION_DIR MAP_NAME IMG_FILE_FORMAT), 2, c);
+  TEXTURE *t = texture_load(gif_load(ASSETS_DIR LOCATION_DIR "void/ERROR" IMG_FILE_FORMAT), 2, c);
   texture_unload(&t);
 }
 

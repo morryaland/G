@@ -13,9 +13,17 @@ void fps_calc()
   time_last = game_timer;
 }
 
+void cam_init()
+{
+  game_camera.f = 2;
+  ENTITY **e = malloc(sizeof(ENTITY*));
+  e[0] = entity_init(0, 0, 0, 0, 0, 0);
+  game_camera.e = global_entity_init("camera", e, 1, NULL, 0);
+}
+
 void cam_move(float x, float y)
 {
-  move(&game_camera.mstackid, game_camera.speed, &game_camera.x, &game_camera.y, x, y);
+  move(&_game_camera->mstackid, _game_camera->speed, &_game_camera->x, &_game_camera->y, x, y);
 }
 
 MAP *player_map()
@@ -24,11 +32,11 @@ MAP *player_map()
     fprintf(stderr, "player is null\n");
   }
   else if (!load_map) {
-    load_map = map_load(player->region_map_name);
+    load_map = map_load(player->location_map_name);
   }
-  else if (strcmp(load_map->location_map_name, player->region_map_name)) {
+  else if (strcmp(load_map->location_map_name, player->location_map_name)) {
     map_unload(&load_map);
-    load_map = map_load(player->region_map_name);
+    load_map = map_load(player->location_map_name);
   }
   return load_map;
 }

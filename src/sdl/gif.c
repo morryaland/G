@@ -17,6 +17,7 @@ GIF_ANIMATION *gif_load(const char *path)
   IMG_FreeAnimation(a);
   gif->count = 0;
   gif->time_start_frame = 0;
+  strcpy(gif->path, path);
   return gif;
 }
 

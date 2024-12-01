@@ -5,16 +5,17 @@
 #include "move_stack.h"
 #include "player/player.h"
 
+#define _game_camera game_camera.e[0].entities[0]
+
 typedef struct _camera {
-  float x;
-  float y;
+  GLOBAL_ENTITY *e;
   float f;
-  float speed;
-  int mstackid;
 } CAMERA;
 
 extern CAMERA game_camera;
 extern double game_fps;
+
+void cam_init();
 
 void cam_move(float x, float y);
 

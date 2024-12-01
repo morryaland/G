@@ -11,5 +11,5 @@
 #define PIX_PER_UNIT 128
 
 #define NAME_MAX 64
-#define PATH_MAX 256
+#define PATH_MAX 255
 #define PLAYER_SPRITE 4

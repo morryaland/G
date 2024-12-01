@@ -9,7 +9,7 @@ static MAP *map_init(const char *name)
 {
   MAP *m = malloc(sizeof(MAP));
   m->texture_map = NULL;
-  m->entity = NULL;
+  m->entities = NULL;
   strcpy(m->location_map_name, name);
   m->texture_c = m->entity_c = 0;
   return m;
@@ -155,8 +155,8 @@ MAP *map_load(const char *map_name)
         }
       }
       GLOBAL_ENTITY *ge = global_entity_init(entity_name, entity_list, e_c, sprite_list, s_c);
-      m->entity = realloc(m->entity, sizeof(GLOBAL_ENTITY*) * (m->entity_c + 1));
-      m->entity[m->entity_c] = ge;
+      m->entities = realloc(m->entities, sizeof(GLOBAL_ENTITY*) * (m->entity_c + 1));
+      m->entities[m->entity_c] = ge;
       m->entity_c++;
     }
     else {
@@ -183,11 +183,11 @@ void map_unload(MAP **m)
     }
     free((**m).texture_map);
   }
-  if ((**m).entity) {
+  if ((**m).entities) {
     for (int i = 0; i < (**m).entity_c; i++) {
-      global_entity_destroy(&(**m).entity[i]);
+      global_entity_destroy(&(**m).entities[i]);
     }
-    free((**m).entity);
+    free((**m).entities);
   }
   free(*m);
   *m = NULL;

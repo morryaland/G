@@ -1,9 +1,11 @@
 #ifndef __GIF_H__
 #define __GIF_H__
 
-#include <SDL2/SDL_image.h>
+#include <SDL_image.h>
+#include "../define.h"
 
 typedef struct _gif_animation {
+  char path[PATH_MAX];
   SDL_Texture **t;
   int *d;
   int h;

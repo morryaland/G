@@ -3666,7 +3666,7 @@ else
 printf "%s\n" "yes" >&6; }
 
 fi
-CFLAGS="$CFLAGS $LUA_CFLAGS"
+CFLAGS="$CFLAGS $LUA_CFLAGS $SDL2_CFLAGS"
 LDFLAGS="$LDFLAGS $LUA_LIBS $SDL2_LIBS $SDL2_IMG_LIBS"
 
 ac_config_files="$ac_config_files Makefile"

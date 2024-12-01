@@ -10,7 +10,7 @@
 
 typedef struct _player {
   GLOBAL_ENTITY *entity;
-  char region_map_name[PATH_MAX]; /* location/map */
+  char location_map_name[PATH_MAX]; /* location/map */
   int flags;
 } PLAYER;
 
