@@ -24,14 +24,14 @@ int main()
     game_timer = SDL_GetPerformanceCounter();
     game_freque = SDL_GetPerformanceFrequency();
     fps_calc();
+    cam_move(___player->x, ___player->y);
     nk_input_begin(dev_mode_ctx);
     event();
     nk_sdl_handle_grab();
     nk_input_end(dev_mode_ctx);
-    cam_move(___player->x, ___player->y);
     GLOBAL_ENTITY *ge = player_map()->entities[0];
-    entity_move(ge->entities[0], ge->entities[0]->x + rand() % 4 - 2, ge->entities[0]->y + rand() % 4 - 2);
-    entity_move(ge->entities[1], ge->entities[1]->x + rand() % 4 - 2, ge->entities[1]->y + rand() % 4 - 2);
+    entity_move(ge->entities[0], ge->entities[0]->x + rand() % 3 - 1, ge->entities[0]->y + rand() % 3 - 1);
+    entity_move(ge->entities[1], ge->entities[1]->x + rand() % 3 - 1, ge->entities[1]->y + rand() % 3 - 1);
     move_stack();
     SDL_RenderClear(game_renderer);
     render_map(player_map);

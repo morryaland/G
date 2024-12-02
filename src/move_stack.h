@@ -13,12 +13,14 @@ typedef struct _move_stack {
   unsigned long te;
   unsigned long tl;
   int *id;
-} MOVE_STACK;
+} MOVE;
 
 typedef struct _global_move_stack {
-  MOVE_STACK *stack;
+  MOVE *stack;
   int stack_c;
 } GLOBAL_MOVE_STACK;
+
+extern GLOBAL_MOVE_STACK game_move_stack;
 
 void move_stack();
 

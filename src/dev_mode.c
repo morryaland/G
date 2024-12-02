@@ -7,6 +7,7 @@
 #define NK_INCLUDE_DEFAULT_FONT
 #include "nuklear.h"
 #include "nuklear_sdl_renderer.h"
+#include "move_stack.h"
 #include "dev_mode.h"
 #include "game.h"
 
@@ -16,7 +17,7 @@ struct nk_context *dev_mode_ctx;
 static void entity_info(GLOBAL_ENTITY *e, int id)
 {
   if (nk_tree_push_id(dev_mode_ctx, NK_TREE_TAB, e->name, NK_MINIMIZED, id)) {
-    if (nk_tree_push_id(dev_mode_ctx, NK_TREE_TAB, "sprites", NK_MINIMIZED, id)) {
+    if (e->state_c && nk_tree_push_id(dev_mode_ctx, NK_TREE_TAB, "sprites", NK_MINIMIZED, id)) {
       nk_layout_row_dynamic(dev_mode_ctx, 200, 2);
       for (int i = 0; i < e->state_c; i++) {
         if (nk_group_begin(dev_mode_ctx, e->sprites[i]->path, NK_WINDOW_TITLE | NK_WINDOW_BORDER | NK_WINDOW_NO_SCROLLBAR)) {
@@ -27,7 +28,7 @@ static void entity_info(GLOBAL_ENTITY *e, int id)
       }
       nk_tree_pop(dev_mode_ctx);
     }
-    if (nk_tree_push_id(dev_mode_ctx, NK_TREE_TAB, "entities", NK_MINIMIZED, id)) {
+    if (e->entity_c && nk_tree_push_id(dev_mode_ctx, NK_TREE_TAB, "entities", NK_MINIMIZED, id)) {
       for (int i = 0; i < e->entity_c; i++) {
         nk_layout_row_dynamic(dev_mode_ctx, 30, 1);
         nk_labelf_wrap(dev_mode_ctx, "local id: %d mid: %d state %d x: %f y: %f speed %f", e->entities[i]->local_id, e->entities[i]->mstackid, e->entities[i]->state, e->entities[i]->x, e->entities[i]->y, e->entities[i]->speed);
@@ -55,7 +56,7 @@ void dev_window_init(SDL_Window *window, SDL_Renderer *renderer)
 
 void dev_mode_switch()
 {
-  dev_mode_enable = ~dev_mode_enable;
+  dev_mode_enable = !dev_mode_enable;
   SDL_ShowCursor(dev_mode_enable ? 1 : 0);
 }
 
@@ -78,6 +79,13 @@ void dev_window_render()
     if (nk_tree_push(dev_mode_ctx, NK_TREE_TAB, "Entities", NK_MINIMIZED)) {
       for (int i = 0; i < map->entity_c; i++) {
         entity_info(map->entities[i], ++id);
+      }
+      nk_tree_pop(dev_mode_ctx);
+    }
+    if (nk_tree_push(dev_mode_ctx, NK_TREE_TAB, "Move stack", NK_MINIMIZED)) {
+      for (int i = 0; i < game_move_stack.stack_c; i++) {
+        nk_layout_row_dynamic(dev_mode_ctx, 25, 1);
+        nk_labelf(dev_mode_ctx, NK_TEXT_LEFT, "%d: %d", i, *game_move_stack.stack[i].id);
       }
       nk_tree_pop(dev_mode_ctx);
     }

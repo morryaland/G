@@ -4,7 +4,7 @@
 #include "move_stack.h"
 #include "sdl/sdl.h"
 
-static GLOBAL_MOVE_STACK game_move_stack;
+GLOBAL_MOVE_STACK game_move_stack;
 
 static int find_free()
 {
@@ -15,7 +15,7 @@ static int find_free()
   return -1;
 }
 
-static int _move(MOVE_STACK *m)
+static int _move(MOVE *m)
 {
   unsigned long delta_us = (double)(game_timer - m->ts) / game_freque * 1000;
   if (delta_us > m->te) {
@@ -26,13 +26,9 @@ static int _move(MOVE_STACK *m)
   float x, y;
   x = (m->ex - m->sx);
   y = (m->ey - m->sy);
-  float xy = 1, yx = 1;
-  if (fabsf(x) < fabsf(y))
-    xy = x / y;
-  else
-    yx = y / x;
-  x = x ? (x < 0) ? -1 * xy : 1 * xy : 0;
-  y = y ? (y < 0) ? -1 * yx : 1 * yx : 0;
+  float norm = 1 / sqrtf(x * x + y * y + 0.01);
+  x *= norm;
+  y *= norm;
   *m->tx += x / game_fps * m->speed;
   *m->ty += y / game_fps * m->speed;
   return 0;
@@ -47,7 +43,7 @@ void move_stack()
       }
     }
     else if (i == game_move_stack.stack_c - 1) {
-      game_move_stack.stack = realloc(game_move_stack.stack, sizeof(MOVE_STACK) * (game_move_stack.stack_c - 1));
+      game_move_stack.stack = realloc(game_move_stack.stack, sizeof(MOVE) * (game_move_stack.stack_c - 1));
       game_move_stack.stack_c--;
     }
   }
@@ -65,17 +61,17 @@ void move_stack_add(int *id, float speed, float *tx, float *ty, float x, float y
   }
   int free = find_free();
   if (free < 0) {
-    game_move_stack.stack = realloc(game_move_stack.stack, sizeof(MOVE_STACK) * (game_move_stack.stack_c + 1));
+    game_move_stack.stack = realloc(game_move_stack.stack, sizeof(MOVE) * (game_move_stack.stack_c + 1));
     free = game_move_stack.stack_c;
     game_move_stack.stack_c++;
   }
   *id = free;
-  game_move_stack.stack[free].sx = *tx;
-  game_move_stack.stack[free].sy = *ty;
   game_move_stack.stack[free].ex = x;
   game_move_stack.stack[free].ey = y;
   game_move_stack.stack[free].tx = tx;
   game_move_stack.stack[free].ty = ty;
+  game_move_stack.stack[free].sx = *tx;
+  game_move_stack.stack[free].sy = *ty;
   game_move_stack.stack[free].id = id;
   game_move_stack.stack[free].ts = game_timer;
   game_move_stack.stack[free].te = (sqrtf((x - *tx) * (x - *tx) + (y - *ty) * (y - *ty)) * 1000) / speed;
