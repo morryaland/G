@@ -41,7 +41,8 @@ void render_map(MAP *(*m)())
   SDL_Rect sp;
   /* Background */
   screen_proection(&sp, -map->w / 2, -map->h / 2, map->w, map->h);
-  SDL_RenderCopy(game_renderer, gif_animation(map->background), NULL, &sp);
+  if (map->background)
+    SDL_RenderCopy(game_renderer, gif_animation(map->background), NULL, &sp);
   for (int i = 0; i < map->texture_c; i++)
     for (int j = 0; j < map->texture_map[i]->texture_c; j++) {
       int x = map->texture_map[i]->cords[j].x;

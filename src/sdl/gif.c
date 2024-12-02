@@ -5,6 +5,10 @@ GIF_ANIMATION *gif_load(const char *path)
 {
   GIF_ANIMATION *gif = malloc(sizeof(GIF_ANIMATION));
   IMG_Animation *a = IMG_LoadAnimation(path);
+  if (!a) {
+    free(gif);
+    return NULL;
+  }
   gif->len = a->count;
   gif->w = a->w;
   gif->h = a->h;

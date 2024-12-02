@@ -71,6 +71,12 @@ void dev_window_render()
   if (dev_mode_enable && nk_begin(dev_mode_ctx, "dev mode", nk_rect(0, 0, ww / 3, wh), NK_WINDOW_BORDER)) {
     nk_layout_row_dynamic(dev_mode_ctx, 25, 1);
     nk_labelf(dev_mode_ctx, NK_TEXT_LEFT, "map: %s", map->location_map_name);
+    nk_layout_row_dynamic(dev_mode_ctx, 100, 1);
+    if (map->background && nk_group_begin(dev_mode_ctx, map->background->path, NK_WINDOW_TITLE | NK_WINDOW_BORDER | NK_WINDOW_NO_SCROLLBAR)) {
+      struct nk_image img = nk_image_ptr(gif_animation(map->background));
+      nk_draw_image(nk_window_get_canvas(dev_mode_ctx), nk_window_get_content_region(dev_mode_ctx), &img, nk_rgba(255, 255, 255, 255));
+      nk_group_end(dev_mode_ctx);
+    }
     nk_layout_row_dynamic(dev_mode_ctx, 25, 1);
     nk_labelf(dev_mode_ctx, NK_TEXT_LEFT, "cam f: %f", game_camera.f);
     entity_info(game_camera.e, ++id);
