@@ -2,32 +2,32 @@ TARGET=@PACKAGE_NAME@@EXEEXT@
 CC=@CC@
 MKDIR=@MKDIR_P@
 
-BIN_PATH = ./bin
-SRC_PATH = ./src
-OBJ_PATH = ./obj
+BIN_PATH = ./bin/
+SRC_PATH = ./src/
+OBJ_PATH = ./obj/
 
 SRC = $(shell find $(SRC_PATH) -type f -name '*.c')
-OBJ = $(patsubst $(SRC_PATH)/%.c, $(OBJ_PATH)/%.o,$(SRC))
-OBJ_TEST = $(filter-out $(OBJ_PATH)/main.o, $(OBJ))
+OBJ = $(patsubst $(SRC_PATH)%.c, $(OBJ_PATH)%.o,$(SRC))
+OBJ_TEST = $(filter-out $(OBJ_PATH)main.o, $(OBJ))
 
 CFLAGS+= @CFLAGS@
 LDFLAGS+= -L/usr/local/lib -lm -DLOAD_GIF @LDFLAGS@
 
 .PHONY: all test clean graph
 
-all: $(BIN_PATH)/$(TARGET)
+all: $(BIN_PATH)$(TARGET)
 
-$(BIN_PATH)/$(TARGET): $(OBJ)
-	$(CC) -o $@ $(LDFLAGS) $(CFLAGS) $^
+$(BIN_PATH)$(TARGET): $(OBJ)
+	$(CC) -o $@ $^ $(LDFLAGS) $(CFLAGS) 
 
 test: $(OBJ_TEST)
 	$(MAKE) -C ./tests/ LDFLAGS="$(LDFLAGS)" CFLAGS="$(CFLAGS)" OBJ="$(OBJ_TEST)" run
 
-$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
+$(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	$(MKDIR) $(@D)
-	$(CC) -c $< -o $@ $(CFLAGS)
+	$(CC) -c -o $@ $< $(CFLAGS)
 
 clean:
 	rm -fr $(OBJ_PATH)
-	rm -f $(BIN_PATH)/$(TARGET)
+	rm -f $(BIN_PATH)$(TARGET)
 	$(MAKE) -C ./tests/ clean

@@ -15,7 +15,7 @@ void fps_calc()
 
 void cam_init()
 {
-  game_camera.f = 2;
+  game_camera.f = 1;
   ENTITY **e = malloc(sizeof(ENTITY*));
   e[0] = entity_init(0, 0, 0, 0, 0, 0);
   game_camera.e = global_entity_init("camera", e, 1, NULL, 0);

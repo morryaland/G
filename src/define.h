@@ -8,7 +8,7 @@
 #define LOCATION_DIR "locations/"
 #define ENTITY_DIR "entities/"
 
-#define PIX_PER_UNIT 128
+#define PIX_PER_UNIT 64
 
 #define NAME_MAX 64
 #define PATH_MAX 255
