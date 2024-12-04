@@ -21,15 +21,19 @@ void event()
       case SDL_KEYDOWN:
         if (key_state_arr[SDL_SCANCODE_UP] && !(key_state_arr[SDL_SCANCODE_DOWN])) {
           player_move(___player->x, ___player->y - 1);
+          player_set_state(2);
         }
         else if (!key_state_arr[SDL_SCANCODE_UP] && key_state_arr[SDL_SCANCODE_DOWN]) {
           player_move(___player->x, ___player->y + 1);
+          player_set_state(0);
         }
         if (key_state_arr[SDL_SCANCODE_RIGHT] && !key_state_arr[SDL_SCANCODE_LEFT]) {
           player_move(___player->x + 1, ___player->y);
+          player_set_state(1);
         }
         else if (!key_state_arr[SDL_SCANCODE_RIGHT] && key_state_arr[SDL_SCANCODE_LEFT]) {
           player_move(___player->x - 1, ___player->y);
+          player_set_state(3);
         }
         if (key_state_arr[SDL_SCANCODE_LALT] && key_state_arr[SDL_SCANCODE_F4]) {
           dev_mode_switch();

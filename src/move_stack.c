@@ -26,7 +26,7 @@ static int _move(MOVE *m)
   float x, y;
   x = (m->ex - m->sx);
   y = (m->ey - m->sy);
-  float norm = 1 / sqrtf(x * x + y * y + 0.01);
+  float norm = 1 / sqrtf(x * x + y * y + 0.001);
   x *= norm;
   y *= norm;
   *m->tx += x / game_fps * m->speed;
@@ -42,7 +42,10 @@ void move_stack()
         *game_move_stack.stack[i].id = -1;
       }
     }
-    else if (i == game_move_stack.stack_c - 1) {
+    else if (i < game_move_stack.stack_c - 1) {
+      game_move_stack.stack[i] = game_move_stack.stack[i + 1];
+    }
+    else {
       game_move_stack.stack = realloc(game_move_stack.stack, sizeof(MOVE) * (game_move_stack.stack_c - 1));
       game_move_stack.stack_c--;
     }

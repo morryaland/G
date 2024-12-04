@@ -20,7 +20,7 @@ void player_init(char *default_map, float x, float y, float w, float h, int flag
 
 void player_set_map(char *map_name);
 
-#define player_set_state entity_set_state(___player, unsigned char state);
+#define player_set_state(state) entity_set_state(___player, state)
 
 #define player_move(x, y) entity_move(___player, x, y)
 
