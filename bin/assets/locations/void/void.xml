@@ -5,14 +5,12 @@
   <Texture name="void/ERROR">
     <Rectangle x="1" y="1" w="1" h="1"/>
     <Rectangle x="2" y="2" w="1" h="1"/>
-  </Texture>
-  <Texture name="void/ERROR">
     <Rectangle x="-2" y="-2" w="1" h="1"/>
     <Rectangle x="-1" y="-1" w="1" h="1"/>
   </Texture>
   <GlobalEntity name="ERROR">
-    <Entity x="4.5" y="3.5" w="1" h="1">random_move</Entity>
-    <Entity x="-4.5" y="-3.5" w="1" h="1">random_move></Entity>
+    <Entity x="4" y="3" w="1" h="1">random_move</Entity>
+    <Entity x="-4" y="-3" w="1" h="1">random_move></Entity>
     <Sprite>ERROR</Sprite>
   </GlobalEntity>
 </Map>
