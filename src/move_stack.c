@@ -61,9 +61,8 @@ void move_stack_free()
 
 void move_stack_add(int *id, float speed, float *tx, float *ty, float x, float y)
 {
-  if (*id >= 0) {
+  if (*id >= 0)
     return;
-  }
   int free = find_free();
   if (free < 0) {
     game_move_stack.stack = realloc(game_move_stack.stack, sizeof(MOVE) * (game_move_stack.stack_c + 1));

@@ -8,8 +8,8 @@
 void Test_map_load(CuTest *tc)
 {
   MAP test_map = {
-    .w = 128,
-    .h = 128,
+    .w = 64,
+    .h = 64,
     .background = gif_load(ASSETS_DIR LOCATION_DIR "void/grass" IMG_FILE_FORMAT),
     .location_map_name = MAP_NAME
   };
@@ -20,11 +20,11 @@ void Test_map_load(CuTest *tc)
   CuAssertPtrNotNull(tc, load_map->texture_map[0]->sprite);
   CuAssertPtrNotNull(tc, load_map->texture_map[0]->cords);
   CuAssertIntEquals(tc, load_map->texture_map[0]->cords[0].x, 1);
-  CuAssertPtrNotNull(tc, load_map->entity);
-  CuAssertPtrNotNull(tc, load_map->entity[0]->entities);
-  CuAssertPtrNotNull(tc, load_map->entity[0]->sprites);
-  CuAssertPtrNotNull(tc, load_map->entity[0]->entities[0]);
-  CuAssertPtrNotNull(tc, load_map->entity[0]->sprites[0]);
+  CuAssertPtrNotNull(tc, load_map->entities);
+  CuAssertPtrNotNull(tc, load_map->entities[0]->entities);
+  CuAssertPtrNotNull(tc, load_map->entities[0]->sprites);
+  CuAssertPtrNotNull(tc, load_map->entities[0]->entities[0]);
+  CuAssertPtrNotNull(tc, load_map->entities[0]->sprites[0]);
   CuAssertIntEquals(tc, load_map->w, test_map.w);
   CuAssertIntEquals(tc, load_map->h, test_map.h);
   CuAssertStrEquals(tc, load_map->location_map_name, test_map.location_map_name);
@@ -35,7 +35,7 @@ void Test_map_load(CuTest *tc)
 void Test_player(CuTest *tc)
 {
   player_init("void/void", 1.1, 2.2, 2, 3, 0xFF);
-  CuAssertStrEquals(tc, player->region_map_name, "void/void");
+  CuAssertStrEquals(tc, player->location_map_name, "void/void");
   CuAssertIntEquals(tc, player->entity->state_c, PLAYER_SPRITE);
   CuAssertPtrNotNull(tc, player->entity->sprites);
   CuAssertPtrNotNull(tc, player->entity->sprites[0]);

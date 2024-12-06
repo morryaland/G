@@ -70,6 +70,8 @@ void dev_window_render()
   nk_style_push_style_item(dev_mode_ctx, &s->window.fixed_background, nk_style_item_color(nk_rgba(40,40,60,200)));
   if (dev_mode_enable && nk_begin(dev_mode_ctx, "dev mode", nk_rect(0, 0, ww / 3, wh), NK_WINDOW_BORDER)) {
     nk_layout_row_dynamic(dev_mode_ctx, 25, 1);
+    nk_labelf(dev_mode_ctx, NK_TEXT_LEFT, "fps: %f", game_fps);
+    nk_layout_row_dynamic(dev_mode_ctx, 25, 1);
     nk_labelf(dev_mode_ctx, NK_TEXT_LEFT, "map: %s", map->location_map_name);
     nk_layout_row_dynamic(dev_mode_ctx, 100, 1);
     if (map->background && nk_group_begin(dev_mode_ctx, map->background->path, NK_WINDOW_TITLE | NK_WINDOW_BORDER | NK_WINDOW_NO_SCROLLBAR)) {
