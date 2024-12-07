@@ -17,6 +17,7 @@ int main()
 {
   sdl_init();
   SDL_ShowCursor(0);
+  SDL_SetHint(SDL_HINT_VIDEO_MINIMIZE_ON_FOCUS_LOSS, "0");
   dev_window_init(game_window, game_renderer);
   player_init("void/void", 0, 0, 1, 1, 0xFF);
   cam_init();

@@ -25,14 +25,6 @@ void sdl_init()
   SDL_DisplayMode dm;
   SDL_GetCurrentDisplayMode(0, &dm);
   SDL_CreateWindowAndRenderer(dm.w ?: DEFAULT_WINDOW_WIDTH, dm.h ?: DEFAULT_WINDOW_HEIGHT, SDL_WINDOW_FULLSCREEN | SDL_WINDOW_SHOWN | SDL_WINDOW_ALLOW_HIGHDPI, &game_window, &game_renderer);
-  int render_w, render_h;
-  int window_w, window_h;
-  float scale_x, scale_y;
-  SDL_GetRendererOutputSize(game_renderer, &render_w, &render_h);
-  SDL_GetWindowSize(game_window, &window_w, &window_h);
-  scale_x = (float)(render_w) / (float)(window_w);
-  scale_y = (float)(render_h) / (float)(window_h);
-  SDL_RenderSetScale(game_renderer, scale_x, scale_y);
 }
 
 void render_map(MAP *(*m)())
